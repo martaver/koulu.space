@@ -1,34 +1,28 @@
 html, body{
   height: 100%;
-  background: #F4FAFA;
+  background: #000000;
+  margin: 0;
 }
-button.active{
-  background: #fff;
-  color: #009688;
-}
-button.active:hover{
-  color: #fff;
-}
-.fill{
-  flex: 1 1 auto;
-}
-.app-state{
-  margin: 15px;
-  flex: 1;
-}
-.home{
-  flex: 1;
-}
-md-content{
-  display: flex;
-  flex-direction: column;
+
+md-content {
   height: 100%;
+  background: url('../assets/img/bm-sunset-bikes.jpg') no-repeat;
+  background-size: cover;
+  background-clip: padding-box;
 }
-footer{
-  flex: 0 0 60px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
+
+#main-actions-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 3px;
+}
+
+button {
+  display: block;
+  background: rgba(187, 187, 187, 0.24);
+  color: #009688;
+  border: none;
+  width: 100%;
+  margin-top: 3px;
 }

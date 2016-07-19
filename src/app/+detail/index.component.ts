@@ -7,7 +7,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     ...ROUTER_DIRECTIVES
   ],
   template: `
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet>    
   `
 })
 export class Index {

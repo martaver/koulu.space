@@ -28,6 +28,7 @@ import { XLarge } from './x-large';
 export class Home {
   // Set our default values
   localState = { value: '' };
+  myValue = 'Hellos';
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title) {
 

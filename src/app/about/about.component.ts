@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 
 /*
  * We're loading this component asynchronously
@@ -14,18 +14,20 @@ console.log('`About` component loaded asynchronously');
     h1 {
       font-family: Arial, Helvetica, sans-serif
     }
-    md-card{
+    md-card {
       margin: 25px;
     }
   `],
-  template: `
-  <md-card>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </md-card>
+  template: `  
   <md-card>
     <h3>
-      patrick@AngularClass.com
+      Teach
+    </h3>  
+  </md-card>
+  
+  <md-card>    
+    <h3>
+      Learn
     </h3>
   </md-card>
 
