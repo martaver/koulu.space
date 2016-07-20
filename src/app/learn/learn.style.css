@@ -1,0 +1,10 @@
+#main-content {
+  position: relative;
+  height: 100%;
+}
+
+img.main-content-bg {
+  position: absolute;
+  height: 100%;
+  width: auto;
+}

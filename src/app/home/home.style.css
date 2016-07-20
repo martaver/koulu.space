@@ -1,14 +1,51 @@
-/*styles for home content only*/
-.card-container{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-    
-    border: 2px dashed #FBC02D;
+#main-content {
+  position: relative;
+  height: 100%;
 }
-.sample-content{
-    flex: 1;
+
+img.main-content-bg {
+  position: absolute;
+  height: 100%;
+  width: auto;
 }
-.card-container md-card{
-    margin: 5px;
+
+img.main-content-logo {
+  position: absolute;
+  width: 50%;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 5%;
+}
+
+#main-actions-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#main-actions-container button {
+  background: rgba(198, 198, 198, 0.32) !important;
+  height: 50%;
+  margin-bottom: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#main-actions-container button .prefix {
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.3em;
+  color: rgba(198, 198, 198, 1);
+}
+
+#main-actions-container button .action {
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 2.3em;
+  font-weight: bold;
+  color: rgba(198, 198, 198, 1);
+  text-transform: uppercase;
 }

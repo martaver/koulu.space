@@ -2,8 +2,8 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
-
 import { AppState } from './app.service';
+import {Router} from "@angular/router";
 
 /*
  * App Component
@@ -17,28 +17,24 @@ import { AppState } from './app.service';
   ],
   template: `
     <md-content layout="center end">
-      <div id="main-content"></div>
-      <div id="main-actions-container">
-        <button>Teach</button>    
-        <button>Learn</button>
-    </div>    
+      <router-outlet></router-outlet>
     </md-content>
   `
 })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  loading = false;
-  name = 'Angular 2 Webpack Starter';
+
+  name = 'Koulu on Fire';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState) {
+  constructor(public appState: AppState, public router: Router) {
 
   }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
+
+
 
 }
 
