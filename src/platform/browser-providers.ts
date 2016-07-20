@@ -15,12 +15,7 @@ import { disableDeprecatedForms, provideForms } from '@angular/forms';
 // TODO(gdi2290): replace with @angular2-material/all
 import { MATERIAL_PROVIDERS } from './browser/angular2-material2';
 
-// AngularClass
-import { provideWebpack } from '@angularclass/webpack-toolkit';
-import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callback';
-
-
-import { routes, asyncRoutes, prefetchRouteCallbacks } from '../app/app.routes';
+import { routes } from '../app/app.routes';
 /*
 * Application Providers/Directives/Pipes
 * providers/directives/pipes that only live in our browser environment
@@ -31,8 +26,6 @@ export const APPLICATION_PROVIDERS = [
   provideForms(),
 
   provideRouter(routes),
-  provideWebpack(asyncRoutes),
-  providePrefetchIdleCallbacks(prefetchRouteCallbacks),
 
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
