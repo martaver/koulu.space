@@ -15,20 +15,28 @@ import {Router} from "@angular/router";
   styleUrls: [ './home.style.css' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
-<div id="main-content">
-  <img class="main-content-bg" src="../../assets/img/bm-sunset-bikes.jpg">
-  <img class="main-content-logo" src="../../assets/img/koulu-logo.png">
+<div id="home-container">
+  <div class="home-container-bg-container">
+    <img class="home-container-bg" src="../../assets/img/bm-sunset-bikes.jpg">
+  </div>  
+  
+  <div id="home-container-content">
+    <img class="home-container-logo" src="../../assets/img/koulu-logo.png">
+  </div>
+  
+  <div id="home-container-actions">
+    <button md-button (click)="onTeachClicked()">
+      <div class="prefix">I want to</div>
+      <div class="action">Teach</div>
+    </button>
+    <button md-button (click)="onLearnClicked()">
+      <div class="prefix">I want to</div>
+      <div class="action">Learn</div>
+    </button>  
+  </div>
+  
 </div>
-<div id="main-actions-container">
-  <button md-button (click)="onTeachClicked()">
-    <div class="prefix">I want to</div>
-    <div class="action">Teach</div>
-  </button>
-  <button md-button (click)="onLearnClicked()">
-    <div class="prefix">I want to</div>
-    <div class="action">Learn</div>
-  </button>
-</div>
+
 
 `
 })

@@ -1,34 +1,45 @@
-#main-content {
+#home-container {
   position: relative;
   height: 100%;
-}
-
-img.main-content-bg {
-  position: absolute;
-  height: 100%;
-  width: auto;
-}
-
-img.main-content-logo {
-  position: absolute;
-  width: 50%;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 5%;
-}
-
-#main-actions-container {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 50%;
   display: flex;
   flex-direction: column;
 }
 
-#main-actions-container button {
+img.home-container-bg {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  z-index: 0;
+  left: 0;
+}
+
+img.home-container-logo {
+  height: 200px;
+}
+
+#home-container-content {
+  flex-grow: 1;
+  z-index: 1;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row; /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+#home-container-actions {
+
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+#home-container-actions button {
   background: rgba(198, 198, 198, 0.32) !important;
   height: 50%;
   margin-bottom: 4px;
@@ -36,13 +47,13 @@ img.main-content-logo {
   margin-right: 4px;
 }
 
-#main-actions-container button .prefix {
+#home-container-actions button .prefix {
   font-family: 'Droid Sans', sans-serif;
   font-size: 1.3em;
   color: rgba(198, 198, 198, 1);
 }
 
-#main-actions-container button .action {
+#home-container-actions button .action {
   font-family: 'Droid Sans', sans-serif;
   font-size: 2.3em;
   font-weight: bold;

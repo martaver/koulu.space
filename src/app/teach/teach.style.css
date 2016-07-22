@@ -1,12 +1,30 @@
-#main-content {
+#teach-container {
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-img.main-content-bg {
-  position: absolute;
-  height: 120%;
-  width: auto;
-  margin-left: -90%;
-  top: -20%;
+.teach-container-bg-container {
+  height:100%;
+  width: 100%;
+  position:absolute;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
 }
+
+.teach-container-bg {
+  position: relative;
+  height: 120%;
+  top: -20%;
+  z-index: -1;
+}
+
+.teach-container-content {
+  flex-grow: 1;
+  z-index: 1;
+  color: white;
+}
+

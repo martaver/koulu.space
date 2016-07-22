@@ -1,10 +1,20 @@
-#main-content {
+#learn-container {
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-img.main-content-bg {
+img.learn-container-bg {
   position: absolute;
   height: 100%;
   width: auto;
+  z-index: 0;
+  left: 0;
+}
+
+.learn-container-content {
+  flex-grow: 1;
+  z-index: 1;
+  color: white;
 }
