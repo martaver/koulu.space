@@ -174,10 +174,9 @@ module.exports = {
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
       },
-
       {
         test: /\.jpg$/,
-        loader: "url-loader?limit=10000&mimetype=image/jpg"
+        loader: "file"
       }
 
     ]

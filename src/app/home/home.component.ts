@@ -16,9 +16,9 @@ import {Router} from "@angular/router";
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
 <div id="home-container">
-  <div class="home-container-bg-container">
-    <img class="home-container-bg" src="../../assets/img/bm-sunset-bikes.jpg">
-  </div>  
+  <!--<div class="home-container-bg-container">-->
+    <!--<img class="home-container-bg" src="../../assets/img/bm-sunset-bikes.jpg">-->
+  <!--</div>  -->
   
   <div id="home-container-content">
     <img class="home-container-logo" src="../../assets/img/koulu-logo.png">

@@ -3,6 +3,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  background: url(/assets/img/bm-sunset-bikes.jpg);
 }
 
 img.home-container-bg {
