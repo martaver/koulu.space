@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import {PhotoBooth} from "../photo-booth/photo-booth";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
@@ -24,17 +24,28 @@ import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
         <br>
         <br>
         <br>        
-    <photo-booth></photo-booth>  
+    <div class="photo-booth-container">
+      <photo-booth (gotSnapshot)="onGotSnapshot($event)"></photo-booth>    
+    </div>
   </div>
   
   <div class="teach-container-actions">
-    
+    <button md-button (click)="nup()" *ngIf="hasSnapshot == true">      
+      <div class="action">Nup</div>
+    </button>  
+    <button md-button (click)="yup()" *ngIf="hasSnapshot == true">
+      <div class="action">Yup</div>
+    </button>    
   </div>
 </div> 
 
 `
 })
 export class Teach {
+
+  @ViewChild(PhotoBooth) photoBooth:PhotoBooth;
+
+  private hasSnapshot: boolean;
 
   // TypeScript public modifiers
   constructor(public router: Router) {
@@ -43,5 +54,11 @@ export class Teach {
 
   ngOnInit() {
 
+  }
+
+  private onGotSnapshot(image:Blob){
+
+    console.log('got snapshot');
+    this.hasSnapshot = true;
   }
 }

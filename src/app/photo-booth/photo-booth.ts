@@ -2,7 +2,7 @@
  * Created by sebas_000 on 20/07/2016.
  */
 
-import {Component, ElementRef, AfterViewInit } from '@angular/core';
+import {Component, ElementRef, AfterViewInit, Output, EventEmitter} from '@angular/core';
 import any = jasmine.any;
 import {OnDestroy} from "@angular/core/esm";
 
@@ -39,8 +39,7 @@ enum State {
 })
 export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
-
-
+  @Output() gotSnapshot = new EventEmitter();
 
   public State = State;
   state: State = State.Recording;
@@ -52,7 +51,6 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
   private context: CanvasRenderingContext2D;
 
   constructor(public element: ElementRef) {
-
 
   }
 
@@ -95,7 +93,6 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
     });
   }
 
-
   public snapshot() {
 
     if(this.window.stream) {
@@ -115,6 +112,8 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       this.imgSrc = this.canvas.toDataURL('image/png');
 
       this.state = this.State.Confirming;
+
+      this.gotSnapshot.emit({});
     }
   }
 
