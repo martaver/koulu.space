@@ -14,11 +14,7 @@ import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
   template: `
 <div id="teach-container">
 
-  <koulu-toolbar title="Start teaching"></koulu-toolbar>
-  
-  <div class="teach-container-bg-container">
-    <img class="teach-container-bg" src="../../assets/img/bm-night-purple-head.jpg">
-  </div>
+  <koulu-toolbar title="Start teaching"></koulu-toolbar>  
   
   <div class="teach-container-content">
     <h2>Cool!</h2>

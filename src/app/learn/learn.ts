@@ -12,11 +12,7 @@ import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
   styleUrls: [ './learn.style.css' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
-<div id="learn-container">
-  
-  <div class="learn-container-bg-container">
-    <img class="learn-container-bg" src="../../assets/img/bm-sunset-silhouettes.jpg">
-  </div>
+<div id="learn-container">  
   
   <div class="learn-container-content">
     <koulu-toolbar title="Start learning"></koulu-toolbar>
