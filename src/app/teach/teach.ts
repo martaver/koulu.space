@@ -61,4 +61,13 @@ export class Teach {
     console.log('got snapshot');
     this.hasSnapshot = true;
   }
+
+  private nup(){
+
+    this.photoBooth.start();
+  }
+
+  private yup(){
+
+  }
 }

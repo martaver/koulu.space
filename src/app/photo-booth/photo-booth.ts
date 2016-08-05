@@ -2,9 +2,10 @@
  * Created by sebas_000 on 20/07/2016.
  */
 
-import {Component, ElementRef, AfterViewInit, Output, EventEmitter} from '@angular/core';
-import any = jasmine.any;
-import {OnDestroy} from "@angular/core/esm";
+import {
+  Component, ElementRef, AfterViewInit, OnDestroy, Output, EventEmitter, OnChanges,
+  SimpleChanges
+} from '@angular/core';
 
 enum State {
   Recording,
@@ -16,6 +17,7 @@ enum State {
   styles: [`
     video {
       width: 100%;
+      height: 100%;
     }
     canvas {
       display: none;      
@@ -26,12 +28,12 @@ enum State {
 `],
   template: `
 
-<div *ngIf="state == State.Recording" id="recorder">
+<div id="recorder" [ngStyle]="{'display': displayRecorder}">
   <video muted autoplay (click)="snapshot()"></video>
   <canvas></canvas>  
 </div>
 
-<div *ngIf="state == State.Confirming" id="confirmer">
+<div id="confirmer" [ngStyle]="{'display': displayConfirmer}">
   <img [src]="imgSrc"/>
 </div>
 
@@ -39,7 +41,11 @@ enum State {
 })
 export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
+
   @Output() gotSnapshot = new EventEmitter();
+
+  private displayRecorder = "inherit";
+  private displayConfirmer = "none";
 
   public State = State;
   state: State = State.Recording;
@@ -56,21 +62,15 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
 
-    this.start();
-  }
-
-  public start() {
+    this.window = window;
+    this.navigator = window.navigator;
 
     this.video = this.element.nativeElement.querySelector('#recorder').querySelector('video');
 
-    this.window = window;
-    this.navigator = window.navigator;
-    this.navigator.getUserMedia = this.navigator.getUserMedia || this.navigator.webkitGetUserMedia || this.navigator.mozGetUserMedia || this.navigator.msGetUserMedia;
-
     if (this.window.stream) {
 
-      this.video.src = null;
-      if(this.window.stream.stop) this.window.stream.stop();
+      this.releaseVideo();
+      this.releaseStream();
     }
 
     var constraints = {
@@ -78,6 +78,7 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       video: true
     };
 
+    this.navigator.getUserMedia = this.navigator.getUserMedia || this.navigator.webkitGetUserMedia || this.navigator.mozGetUserMedia || this.navigator.msGetUserMedia;
     this.navigator.getUserMedia(constraints, (stream) => {
 
       //Success
@@ -91,6 +92,17 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       console.log('navigator.getUserMedia error: ', error);
 
     });
+
+    this.start();
+  }
+
+  public start() {
+
+    this.state = State.Recording;
+
+    this.displayConfirmer = "none";
+    this.displayRecorder = "inherit";
+
   }
 
   public snapshot() {
@@ -104,14 +116,16 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       this.context = this.canvas.getContext('2d');
       this.context.drawImage(this.video, 0, 0);
 
-      this.releaseVideo();
-      this.releaseStream();
+      // this.releaseVideo();
+      // this.releaseStream();
 
       // // "image/webp" works in Chrome.
       // // Other browsers will fall back to image/png.
       this.imgSrc = this.canvas.toDataURL('image/png');
 
       this.state = this.State.Confirming;
+      this.displayConfirmer = "inherit";
+      this.displayRecorder = "none";
 
       this.gotSnapshot.emit({});
     }
@@ -119,19 +133,24 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
   private releaseStream() {
 
-    //Old, deprecated way of stopping the stream using MediaStream object.
-    if (this.window.stream.stop) { this.window.stream.stop(); }
+    if(this.window.stream) {
 
-    //New track-based approach to managing audio & video streams.
-    else {
+      //Old, deprecated way of stopping the stream using MediaStream object.
+      if (this.window.stream.stop) { this.window.stream.stop(); }
 
-      this.window.stream.getAudioTracks().forEach(function(track) {
-        track.stop();
-      });
+      //New track-based approach to managing audio & video streams.
+      else {
 
-      this.window.stream.getVideoTracks().forEach(function(track) {
-        track.stop();
-      });
+        this.window.stream.getAudioTracks().forEach(function(track) {
+          track.stop();
+        });
+
+        this.window.stream.getVideoTracks().forEach(function(track) {
+          track.stop();
+        });
+      }
+
+      this.window.stream = null;
     }
   }
 
