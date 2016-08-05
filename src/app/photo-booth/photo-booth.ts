@@ -28,12 +28,12 @@ enum State {
 `],
   template: `
 
-<div id="recorder" [ngStyle]="{'display': displayRecorder}">
+<div id="recorder" [ngStyle]="{'display': state == State.Recording ? 'inherit' : 'none'}">
   <video muted autoplay (click)="snapshot()"></video>
   <canvas></canvas>  
 </div>
 
-<div id="confirmer" [ngStyle]="{'display': displayConfirmer}">
+<div id="confirmer" [ngStyle]="{'display': state == State.Confirming ? 'inherit' : 'none'}">
   <img [src]="imgSrc"/>
 </div>
 
@@ -43,9 +43,6 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
 
   @Output() gotSnapshot = new EventEmitter();
-
-  private displayRecorder = "inherit";
-  private displayConfirmer = "none";
 
   public State = State;
   state: State = State.Recording;
@@ -100,9 +97,6 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
     this.state = State.Recording;
 
-    this.displayConfirmer = "none";
-    this.displayRecorder = "inherit";
-
   }
 
   public snapshot() {
@@ -116,16 +110,11 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       this.context = this.canvas.getContext('2d');
       this.context.drawImage(this.video, 0, 0);
 
-      // this.releaseVideo();
-      // this.releaseStream();
-
       // // "image/webp" works in Chrome.
       // // Other browsers will fall back to image/png.
       this.imgSrc = this.canvas.toDataURL('image/png');
 
       this.state = this.State.Confirming;
-      this.displayConfirmer = "inherit";
-      this.displayRecorder = "none";
 
       this.gotSnapshot.emit({});
     }
