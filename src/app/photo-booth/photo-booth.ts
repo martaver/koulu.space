@@ -2,7 +2,9 @@
  * Created by sebas_000 on 20/07/2016.
  */
 
-import {Component, ElementRef, AfterViewInit} from '@angular/core';
+import {Component, ElementRef, AfterViewInit } from '@angular/core';
+import any = jasmine.any;
+import {OnDestroy} from "@angular/core/esm";
 
 enum State {
   Recording,
@@ -26,8 +28,7 @@ enum State {
 
 <div *ngIf="state == State.Recording" id="recorder">
   <video muted autoplay (click)="snapshot()"></video>
-  <canvas></canvas>
-  Testing
+  <canvas></canvas>  
 </div>
 
 <div *ngIf="state == State.Confirming" id="confirmer">
@@ -36,7 +37,9 @@ enum State {
 
 `
 })
-export class PhotoBooth  implements AfterViewInit {
+export class PhotoBooth  implements AfterViewInit, OnDestroy {
+
+
 
 
   public State = State;
@@ -81,14 +84,7 @@ export class PhotoBooth  implements AfterViewInit {
 
       //Success
       this.window.stream = stream; // make stream available to console
-
-      if (this.navigator.mozGetUserMedia) {
-        this.video["mozSrcObject"] = stream;
-      } else {
-        var vendorURL = window.URL || window.hasOwnProperty("webkitURL");
-        this.video.src = vendorURL.createObjectURL(stream);
-      }
-
+      this.video.src = this.window.URL.createObjectURL(stream);
       this.video.play();
 
     }, (error) => {
@@ -111,11 +107,45 @@ export class PhotoBooth  implements AfterViewInit {
       this.context = this.canvas.getContext('2d');
       this.context.drawImage(this.video, 0, 0);
 
+      this.releaseVideo();
+      this.releaseStream();
+
       // // "image/webp" works in Chrome.
       // // Other browsers will fall back to image/png.
-      this.imgSrc = this.canvas.toDataURL('image/webp');
+      this.imgSrc = this.canvas.toDataURL('image/png');
 
       this.state = this.State.Confirming;
     }
+  }
+
+  private releaseStream() {
+
+    //Old, deprecated way of stopping the stream using MediaStream object.
+    if (this.window.stream.stop) { this.window.stream.stop(); }
+
+    //New track-based approach to managing audio & video streams.
+    else {
+
+      this.window.stream.getAudioTracks().forEach(function(track) {
+        track.stop();
+      });
+
+      this.window.stream.getVideoTracks().forEach(function(track) {
+        track.stop();
+      });
+    }
+  }
+
+  private releaseVideo() {
+
+    this.video.pause();
+    this.video.src = null;
+    if(this.video.hasOwnProperty("mozSrcObject")) this.video["mozSrcObject"] = null;
+  }
+
+  ngOnDestroy() {
+
+    this.releaseVideo();
+    this.releaseStream();
   }
 }
