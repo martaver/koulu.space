@@ -3,8 +3,7 @@
  */
 
 import {
-  Component, ElementRef, AfterViewInit, OnDestroy, Output, EventEmitter, OnChanges,
-  SimpleChanges
+  Component, ElementRef, AfterViewInit, OnDestroy, Output, EventEmitter, NgZone
 } from '@angular/core';
 
 enum State {
@@ -17,10 +16,9 @@ enum State {
   styles: [`
     video {
       width: 100%;
-      height: 100%;
     }
     canvas {
-      display: none;      
+      display: none;
     }
     img {
       width: 100%;
@@ -30,7 +28,7 @@ enum State {
 
 <div id="recorder" [ngStyle]="{'display': state == State.Recording ? 'inherit' : 'none'}">
   <video muted autoplay (click)="snapshot()"></video>
-  <canvas></canvas>  
+  <canvas></canvas>
 </div>
 
 <div id="confirmer" [ngStyle]="{'display': state == State.Confirming ? 'inherit' : 'none'}">
@@ -53,7 +51,7 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
   imgSrc: string;
   private context: CanvasRenderingContext2D;
 
-  constructor(public element: ElementRef) {
+  constructor(public element: ElementRef, private zone:NgZone) {
 
   }
 
@@ -61,8 +59,8 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
     this.window = window;
     this.navigator = window.navigator;
-
     this.video = this.element.nativeElement.querySelector('#recorder').querySelector('video');
+    this.navigator.getUserMedia = this.navigator.getUserMedia || this.navigator.webkitGetUserMedia || this.navigator.mozGetUserMedia || this.navigator.msGetUserMedia;
 
     if (this.window.stream) {
 
@@ -75,7 +73,6 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       video: true
     };
 
-    this.navigator.getUserMedia = this.navigator.getUserMedia || this.navigator.webkitGetUserMedia || this.navigator.mozGetUserMedia || this.navigator.msGetUserMedia;
     this.navigator.getUserMedia(constraints, (stream) => {
 
       //Success
@@ -96,7 +93,6 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
   public start() {
 
     this.state = State.Recording;
-
   }
 
   public snapshot() {
@@ -110,15 +106,18 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       this.context = this.canvas.getContext('2d');
       this.context.drawImage(this.video, 0, 0);
 
-      // // "image/webp" works in Chrome.
-      // // Other browsers will fall back to image/png.
       this.imgSrc = this.canvas.toDataURL('image/png');
 
       this.state = this.State.Confirming;
 
-      this.gotSnapshot.emit({});
+      this.canvas.toBlob((blob) => {
+        this.zone.run(() => {
+          this.gotSnapshot.emit(blob);
+        });
+      });
     }
   }
+
 
   private releaseStream() {
 

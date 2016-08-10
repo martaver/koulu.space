@@ -2,50 +2,42 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import {PhotoBooth} from "../photo-booth/photo-booth";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
+import {TeachDetails} from "./teach-details";
+import {TeachSelfie} from "./teach-selfie";
+
+enum State{
+  Selfie,
+  Details,
+  Confirm
+}
 
 @Component({
   selector: 'teach',
+
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './teach.style.css' ],
-  directives: [PhotoBooth, KouluToolbar],
+  directives: [KouluToolbar, TeachDetails, TeachSelfie],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
 <div id="teach-container">
 
-  <koulu-toolbar title="Start teaching"></koulu-toolbar>  
+  <koulu-toolbar title="Start teaching"></koulu-toolbar>    
+  <teach-selfie *ngIf="state == State.Selfie" (gotSelfie)="onGotSelfie($event)" ></teach-selfie>  
+  <teach-details *ngIf="state == State.Details"></teach-details>
   
-  <div class="teach-container-content">
-    <h2>Cool!</h2>
-    <p>Give us a smile, so that people can find you!</p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>        
-    <div class="photo-booth-container">
-      <photo-booth (gotSnapshot)="onGotSnapshot($event)"></photo-booth>    
-    </div>
-  </div>
-  
-  <div class="teach-container-actions">
-    <button md-button (click)="nup()" *ngIf="hasSnapshot == true">      
-      <div class="action">Nup</div>
-    </button>  
-    <button md-button (click)="yup()" *ngIf="hasSnapshot == true">
-      <div class="action">Yup</div>
-    </button>    
-  </div>
 </div> 
 
 `
 })
 export class Teach {
 
-  @ViewChild(PhotoBooth) photoBooth:PhotoBooth;
+  @ViewChild(TeachSelfie) selfie:TeachSelfie;
 
-  private hasSnapshot: boolean;
+  public State = State;
+  private state: State = State.Selfie;
+  private blob: Blob;
 
   // TypeScript public modifiers
   constructor(public router: Router) {
@@ -56,18 +48,10 @@ export class Teach {
 
   }
 
-  private onGotSnapshot(image:Blob){
 
-    console.log('got snapshot');
-    this.hasSnapshot = true;
-  }
+  onGotSelfie(blob: Blob) {
 
-  private nup(){
-
-    this.photoBooth.start();
-  }
-
-  private yup(){
-
+    this.blob = blob;
+    this.state = State.Details;
   }
 }
