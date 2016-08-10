@@ -11,6 +11,13 @@ enum State {
   Confirming
 }
 
+export class GotSnapshotEvent {
+
+  constructor(public blob: Blob, public dataUrl: string) {
+
+  }
+}
+
 @Component({
   selector: 'photo-booth',
   styles: [`
@@ -112,7 +119,7 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
       this.canvas.toBlob((blob) => {
         this.zone.run(() => {
-          this.gotSnapshot.emit(blob);
+          this.gotSnapshot.emit(new GotSnapshotEvent(blob, this.imgSrc));
         });
       });
     }

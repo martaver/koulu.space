@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
-import {PhotoBooth} from "../photo-booth/photo-booth";
+import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
 import {TeachDetails} from "./teach-details";
 import {TeachSelfie} from "./teach-selfie";
@@ -25,7 +25,12 @@ enum State{
 
   <koulu-toolbar title="Start teaching"></koulu-toolbar>    
   <teach-selfie *ngIf="state == State.Selfie" (gotSelfie)="onGotSelfie($event)" ></teach-selfie>  
-  <teach-details *ngIf="state == State.Details"></teach-details>
+  <div *ngIf="state == State.Details">
+    <div class="after-selfie-container">
+      <img [src]="snapshot.dataUrl" class="after-selfie">
+    </div>
+    <teach-details></teach-details>
+  </div>  
   
 </div> 
 
@@ -36,8 +41,8 @@ export class Teach {
   @ViewChild(TeachSelfie) selfie:TeachSelfie;
 
   public State = State;
-  private state: State = State.Selfie;
-  private blob: Blob;
+  state: State = State.Selfie;
+  snapshot: GotSnapshotEvent;
 
   // TypeScript public modifiers
   constructor(public router: Router) {
@@ -49,9 +54,9 @@ export class Teach {
   }
 
 
-  onGotSelfie(blob: Blob) {
+  onGotSelfie(snapshot: GotSnapshotEvent) {
 
-    this.blob = blob;
+    this.snapshot = snapshot;
     this.state = State.Details;
   }
 }

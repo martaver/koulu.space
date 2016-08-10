@@ -31,7 +31,7 @@ teach-details {
   display: flex;
   flex-direction: column;
   background: rgba(198, 198, 198, 0.32) !important;
-  margin: 4px 0 4px 4px;
+  margin: 0px 4px 4px 4px;
   padding: 12px 12px 24px 12px;
 }
 
@@ -91,4 +91,16 @@ teach-details {
   flex-grow: 1;
   z-index: 1;
   color: white;
+}
+
+.after-selfie-container {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+img.after-selfie {
+  display: inline;
+
+  /*height: 100%;*/
+  width: 100%;
 }

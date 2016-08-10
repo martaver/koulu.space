@@ -2,7 +2,7 @@
  * Created by sebas_000 on 9/08/2016.
  */
 import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
-import {PhotoBooth} from "../photo-booth/photo-booth";
+import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
 
 @Component({
   selector: 'teach-selfie',
@@ -38,11 +38,11 @@ export class TeachSelfie{
   @ViewChild(PhotoBooth) photoBooth:PhotoBooth;
 
   private hasSnapshot: boolean;
-  private blob: Blob;
+  private snapshot: GotSnapshotEvent;
 
-  private onGotSnapshot(image:Blob) {
+  private onGotSnapshot(event:GotSnapshotEvent) {
 
-    this.blob = image;
+    this.snapshot = event;
     this.hasSnapshot = true;
   }
 
@@ -54,6 +54,6 @@ export class TeachSelfie{
 
   private yup(){
 
-    this.gotSelfie.emit(this.blob);
+    this.gotSelfie.emit(this.snapshot);
   }
 }
