@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   selector: 'index',
-  directives: [
-    ...ROUTER_DIRECTIVES
-  ],
+  styles: [`
+    md-card{
+      margin: 25px;
+    }
+  `],
   template: `
     <router-outlet></router-outlet>    
   `
@@ -18,5 +19,4 @@ export class Index {
   ngOnInit() {
     console.log('hello `Index` component');
   }
-
 }
