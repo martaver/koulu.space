@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import {AppState} from "../app.service";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
+import {Http, Response} from "@angular/http";
 
+class Person{
+  constructor(public id: number, public code: string, public name: string, public email: string, public topic: string) {
+
+  }
+}
 
 @Component({
   selector: 'learn',
@@ -13,9 +19,18 @@ import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
 <div id="learn-container">  
+  <koulu-toolbar title="Start learning"></koulu-toolbar>
   
-  <div class="learn-container-content">
-    <koulu-toolbar title="Start learning"></koulu-toolbar>
+  <div *ngFor="let person of people" class="person-container">  
+    <div class="person-container-left">
+      <img [src]="imgSrc(person)">
+    </div>
+    <div class="person-container-right">
+      <div class="label">
+        <div class="topic">{{person.topic}}</div>
+        <div class="name">by {{person.name}}</div>
+      </div>
+    </div>    
   </div>
 </div>
 
@@ -23,14 +38,28 @@ import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
 })
 export class Learn {
 
+  people: Person[];
+
   // TypeScript public modifiers
-  constructor(public appState: AppState) {
+  constructor(public appState: AppState, private http: Http) {
 
   }
 
   ngOnInit() {
 
+    this.http.get('/api/person')
+      .map((res) => {
+        this.people = res.json();
+      })
+      .catch((err) => {
+        console.log(err);
+        return {};
+      }).subscribe();
   }
 
+  imgSrc(person: Person) {
+
+    return '/api/selfies/'+person.id.toString()+'.png';
+  }
 
 }

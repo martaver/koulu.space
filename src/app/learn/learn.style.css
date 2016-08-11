@@ -1,6 +1,5 @@
 #learn-container {
   position: relative;
-  height: 100%;
   display: flex;
   flex-direction: column;
 
@@ -11,20 +10,66 @@
       rgba(0, 0, 0, 0.1)
     ),
 
-    url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat;
+    url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat fixed;
   background-size: cover;
+  overflow-y: scroll;
 }
 
-img.learn-container-bg {
-  position: absolute;
-  height: 100%;
-  width: auto;
-  z-index: 0;
-  left: 0;
+.person-container {
+  display: flex;
+  flex-direction: row;
+  background: rgba(198, 198, 198, 0.32) !important;
+  margin: 0 4px 4px 4px;
+  color: rgba(198, 198, 198, 1) !important;
+  padding: 4px;
 }
 
-.learn-container-content {
-  flex-grow: 1;
-  z-index: 1;
-  color: white;
+.person-container img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+.person-container-left {
+  width: 40%;
+  overflow: hidden;
+  margin-right: 4px;
+}
+.person-container-right {
+  flex: 1;
+
+
+  align-items: center;
+  padding: 12px;
+
+  display: -webkit-flex;
+
+  -webkit-flex-direction: row; /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.person-container-right .label {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.person-container-right .topic {
+  text-align: center;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: rgba(198, 198, 198, 1);
+  text-transform: uppercase;
+}
+
+.person-container-right .name {
+  text-align: center;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1em;
+  color: rgba(198, 198, 198, 1);
+
 }
