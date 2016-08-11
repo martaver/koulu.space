@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {AppState} from "../app.service";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
 import {Http, Response} from "@angular/http";
+import {LazyLoadImageDirective} from "../lazyload-image/lazyload-image.directive";
+
 
 class Person{
   constructor(public id: number, public code: string, public name: string, public email: string, public topic: string) {
@@ -11,7 +13,7 @@ class Person{
 
 @Component({
   selector: 'learn',
-  directives: [ KouluToolbar ],
+  directives: [ KouluToolbar, LazyLoadImageDirective ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
@@ -23,7 +25,7 @@ class Person{
   
   <div *ngFor="let person of people" class="person-container">  
     <div class="person-container-left">
-      <img [src]="imgSrc(person)">
+      <img [lazyLoad]="imgSrc(person)">
     </div>
     <div class="person-container-right">
       <div class="label">
@@ -43,6 +45,7 @@ export class Learn {
   // TypeScript public modifiers
   constructor(public appState: AppState, private http: Http) {
 
+    // WebWorkerService.workerUrl =
   }
 
   ngOnInit() {
@@ -53,7 +56,6 @@ export class Learn {
       })
       .catch((err) => {
         console.log(err);
-        return {};
       }).subscribe();
   }
 

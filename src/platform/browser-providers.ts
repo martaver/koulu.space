@@ -22,6 +22,7 @@ import { providePrefetchIdleCallbacks } from '@angularclass/request-idle-callbac
 
 import { routes } from '../app/app.routes';
 import { APP_RESOLVER_PROVIDERS } from '../app/app.resolver';
+
 /*
 * Application Providers/Directives/Pipes
 * providers/directives/pipes that only live in our browser environment
