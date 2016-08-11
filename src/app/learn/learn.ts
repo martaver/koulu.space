@@ -51,7 +51,10 @@ export class Learn {
 
     this.http.get('/api/person')
       .map((res) => {
-        this.people = res.json();
+
+        var people = res.json();
+        if(people.length) this.people = people;
+        else this.people = [];
       })
       .catch((err) => {
         console.log(err);

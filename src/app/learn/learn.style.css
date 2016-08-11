@@ -13,6 +13,7 @@
     url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat fixed;
   background-size: cover;
   overflow-y: scroll;
+  min-height: 100%;
 }
 
 .person-container {

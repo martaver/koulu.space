@@ -11,4 +11,5 @@ $db->recreate();
 $result = $db->getAll();
 
 echo(json_encode($result->fetchArray()));
+
 ?>
