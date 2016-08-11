@@ -52,7 +52,7 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
   public State = State;
   state: State = State.Recording;
   video: HTMLVideoElement;
-  canvas: HTMLCanvasElement;
+  canvas: any;
   navigator: any;
   window: any;
   imgSrc: string;
@@ -117,11 +117,11 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
       this.state = this.State.Confirming;
 
-      // this.canvas.toBlob((blob) => {
-      //   this.zone.run(() => {
-      //     this.gotSnapshot.emit(new GotSnapshotEvent(blob, this.imgSrc));
-      //   });
-      // });
+      this.canvas.toBlob((blob) => {
+        this.zone.run(() => {
+          this.gotSnapshot.emit(new GotSnapshotEvent(blob, this.imgSrc));
+        });
+      });
     }
   }
 

@@ -8,6 +8,14 @@ import {
   FormControl, AbstractControl
 } from "@angular/forms";
 import {MdInput} from "@angular2-material/input";
+import {UploadService} from "./UploadService";
+
+export class GotDetailsEvent {
+
+  constructor(public name: string, public email: string, public topic: string) {
+
+  }
+}
 
 @Component({
 
@@ -39,7 +47,7 @@ export class TeachDetails {
 
   @ViewChild('nameElement') nameElement: HTMLInputElement;
 
-  @Output() detailsSubmitted = new EventEmitter();
+  @Output() detailsSubmitted = new EventEmitter<GotDetailsEvent>();
 
   private detailsForm: FormGroup;
   private name: AbstractControl;
@@ -65,8 +73,8 @@ export class TeachDetails {
 
     if(this.detailsForm.valid){
 
-      console.log(this.detailsForm.value);
-      this.detailsSubmitted.emit(this.detailsForm.value);
+      var value = this.detailsForm.value;
+      this.detailsSubmitted.emit(new GotDetailsEvent(value.name, value.email, value.topic));
     }
     else{
       this.name.markAsTouched();

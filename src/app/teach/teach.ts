@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import {Component, ViewChild, NgZone} from '@angular/core';
 import { Router } from "@angular/router";
 import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
-import {TeachDetails} from "./teach-details";
+import {TeachDetails, GotDetailsEvent} from "./teach-details";
 import {TeachSelfie} from "./teach-selfie";
+import {UploadService} from "./UploadService";
 
 enum State{
   Selfie,
@@ -19,6 +20,7 @@ enum State{
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './teach.style.css' ],
   directives: [KouluToolbar, TeachDetails, TeachSelfie],
+  providers: [UploadService],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
 <div id="teach-container">
@@ -29,7 +31,7 @@ enum State{
     <div class="after-selfie-container">
       <img [src]="snapshot.dataUrl" class="after-selfie">
     </div>
-    <teach-details></teach-details>
+    <teach-details (detailsSubmitted)="onDetailsSubmitted($event)"></teach-details>
   </div>  
   
 </div> 
@@ -45,7 +47,7 @@ export class Teach {
   snapshot: GotSnapshotEvent;
 
   // TypeScript public modifiers
-  constructor(public router: Router) {
+  constructor(public router: Router, private upload: UploadService, private zone: NgZone) {
 
   }
 
@@ -58,5 +60,16 @@ export class Teach {
 
     this.snapshot = snapshot;
     this.state = State.Details;
+  }
+
+  onDetailsSubmitted(details: GotDetailsEvent){
+
+    console.log('uploading...', details);
+    this.upload.makeBlobRequest('/api/upload.php', details.name, details.email, details.topic, this.snapshot.blob, 'selfie.png').subscribe((response) => {
+
+      this.zone.run(() => {
+        console.log('uploaded!', response)
+      });
+    });
   }
 }
