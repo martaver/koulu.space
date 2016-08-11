@@ -5,10 +5,9 @@ import {Http, Response} from "@angular/http";
 import {LazyLoadImageDirective} from "../lazyload-image/lazyload-image.directive";
 
 
-class Person{
-  constructor(public id: number, public code: string, public name: string, public email: string, public topic: string) {
+class Person {
 
-  }
+  constructor(public id: number, public code: string, public name: string, public email: string, public topic: string) { }
 }
 
 @Component({
@@ -21,7 +20,7 @@ class Person{
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
 <div id="learn-container">  
-  <koulu-toolbar title="Start learning"></koulu-toolbar>
+  <koulu-toolbar title="Learn anything"></koulu-toolbar>
   
   <div *ngFor="let person of people" class="person-container">  
     <div class="person-container-left">

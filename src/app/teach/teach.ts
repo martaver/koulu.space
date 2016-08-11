@@ -25,7 +25,7 @@ enum State{
   template: `
 <div id="teach-container">
 
-  <koulu-toolbar title="Start teaching"></koulu-toolbar>    
+  <koulu-toolbar title="Sign the yearbook"></koulu-toolbar>    
   <teach-selfie *ngIf="state == State.Selfie" (gotSelfie)="onGotSelfie($event)" ></teach-selfie>  
   <div *ngIf="state == State.Details" class="teach-details-container">
     <div class="after-selfie-container">

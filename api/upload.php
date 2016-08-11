@@ -1,16 +1,6 @@
 <?php
 
-/**
- * Simple example of extending the SQLite3 class and changing the __construct
- * parameters, then using the open method to initialize the DB.
- */
-class KouluDB extends SQLite3
-{
-    function __construct()
-    {
-        $this->open('./db/koulu.sqlite');
-    }
-}
+include 'db.php';
 
 //Extract name, email and topic from headers.
 $headers = getallheaders();
@@ -34,7 +24,7 @@ if(! empty($_FILES) && $hasTopics) {
         if($existing == null) $code = $proposedCode;
     }
 
-    $db->exec("INSERT INTO person (id, code, name, email, topic) VALUES (NULL, '".$code."', '".$name."', '".$email."', '".$topic."')");
+    $db->insert($code, $name, $email, $topic);    
     $id = $db->lastInsertRowID();
 
     $target_dir = "selfies/";

@@ -175,7 +175,7 @@ module.exports = {
         exclude: [helpers.root('src/index.html')]
       },
       {
-        test: /\.jpg$/,
+        test: /\.jpg$|woff/,
         loader: "file"
       }
 

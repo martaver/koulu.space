@@ -23,12 +23,13 @@ import {Router} from "@angular/router";
   
   <div id="home-container-actions">
     <button md-button (click)="onTeachClicked()">
-      <div class="prefix">I want to</div>
-      <div class="action">Teach</div>
+      <div class="action">Sign</div>
+      <div class="prefix">the Yearbook</div>
     </button>
     <button md-button (click)="onLearnClicked()">
-      <div class="prefix">I want to</div>
       <div class="action">Learn</div>
+      <div class="prefix">anything</div>
+      
     </button>  
   </div>
   
