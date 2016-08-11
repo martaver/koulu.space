@@ -144,7 +144,19 @@ module.exports = webpackMerge(commonConfig, {
       aggregateTimeout: 300,
       poll: 1000
     },
-    outputPath: helpers.root('dist')
+    outputPath: helpers.root('dist'),
+
+    //Proxy to API backend
+    proxy: {
+      '/api*': {
+        target: 'http://localhost:8888',
+        secure: false,
+        rewrite: function (req){
+          //Trims the 'api' path from the url.
+          req.url = req.url.replace(/^\/api(.+)$/,'$1');
+        }
+      }
+    }
   },
 
   /*

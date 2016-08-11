@@ -117,11 +117,11 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
       this.state = this.State.Confirming;
 
-      this.canvas.toBlob((blob) => {
-        this.zone.run(() => {
-          this.gotSnapshot.emit(new GotSnapshotEvent(blob, this.imgSrc));
-        });
-      });
+      // this.canvas.toBlob((blob) => {
+      //   this.zone.run(() => {
+      //     this.gotSnapshot.emit(new GotSnapshotEvent(blob, this.imgSrc));
+      //   });
+      // });
     }
   }
 
