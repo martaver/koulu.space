@@ -58,8 +58,9 @@ export class Learn {
         if(people.length) this.people = people;
         else this.people = [];
       })
-      .catch((err) => {
+      .catch((err, obs) => {
         console.log(err);
+        return obs;
       }).subscribe();
   }
 
