@@ -10,9 +10,11 @@
       rgba(0, 0, 0, 0.3)
     ),
 
-    url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat;
+    url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat fixed;
   background-size: cover;
   background-position-x: center;
+  overflow-y: scroll;
+  min-height: 100%;
 }
 
 teach-details {
@@ -22,7 +24,6 @@ teach-details {
 }
 
 .teach-details-container {
-  flex: 1;
 
   display: flex;
   flex-direction: column;
@@ -39,7 +40,7 @@ teach-details {
   flex-direction: column;
   background: rgba(198, 198, 198, 0.32) !important;
   margin: 0px 4px 4px 4px;
-  padding: 12px 12px 24px 12px;
+  padding: 12px 12px 36px 12px;
 }
 
 :host >>> input.md-input-element {
@@ -50,8 +51,16 @@ teach-details {
   color: rgba(198, 198, 198, 1) !important;
 }
 
+:host >>> md-input {
+  overflow: inherit;
+  margin-bottom: 12px;
+}
+
+:host >>> md-hint {
+  color: darkorange;
+}
+
 .teach-container-content {
-  flex-grow: 1;
   z-index: 1;
   color: white;
 }
@@ -64,11 +73,36 @@ teach-details {
   z-index: 1;
 }
 
+.teach-container-instructions {
+
+  background: rgba(198, 198, 198, 0.32) !important;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  padding: 4px;
+
+  color: rgba(198, 198, 198, 1) !important;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1.3em;
+
+  text-align: center;
+}
+
 .teach-container-actions button {
   background: rgba(198, 198, 198, 0.32) !important;
   width: 100%;
   margin-bottom: 4px;
   margin-left: 4px;
+  padding: 12px;
+
+  min-height: 60px;
+}
+
+.teach-container-actions i.material-icons {
+  color: rgba(198, 198, 198, 1) !important;
+  font-size: 2em;
+  position: relative;
+  top: 5px;
 }
 
 .teach-container-actions button:last-child {
@@ -101,8 +135,16 @@ teach-details {
 }
 
 .after-selfie-container {
-  margin-left: 4px;
-  margin-right: 4px;
+  margin: 24px 0 24px 0;
+  flex: 1;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row; /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 
 img.after-selfie {
@@ -110,4 +152,22 @@ img.after-selfie {
 
   /*height: 100%;*/
   width: 100%;
+}
+
+.snapshot-container {
+  /*padding: 4px 4px 0 4px;*/
+
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.snapshot {
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+  margin-left: -25%;
 }

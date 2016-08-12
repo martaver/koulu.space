@@ -12,7 +12,7 @@ $hasTopics = $name != NULL && $email != NULL && $topic != NULL;
 
 if(! empty($_FILES) && $hasTopics) {
 
-    $db = new KouluDb();
+    $db = new KouluDb('./db/koulu.sqlite');
 
     //Generate a code that doesn't'
     $code = null;

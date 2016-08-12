@@ -6,8 +6,8 @@
   background:
 
     linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1)
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
     ),
 
     url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat fixed;
@@ -25,16 +25,28 @@
   padding: 4px;
 }
 
+
+.person-container-left {
+  width: 40%;
+  overflow: hidden;
+  margin-right: 4px;
+
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row; /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
 .person-container img {
   display: block;
   width: 100% !important;
   height: auto !important;
 }
-.person-container-left {
-  width: 40%;
-  overflow: hidden;
-  margin-right: 4px;
-}
+
 .person-container-right {
   flex: 1;
 

@@ -38,7 +38,7 @@ export class GotDetailsEvent {
   </div>  
   
   <div class="teach-container-actions">
-    <button md-button type="submit"><span class="action">Add me</span></button>
+    <button md-button type="submit"><i class="material-icons">thumb_up</i></button>
   </div>
 </form>
 `

@@ -24,12 +24,14 @@ class Person {
   
   <div *ngFor="let person of people" class="person-container">  
     <div class="person-container-left">
-      <img [lazyLoad]="imgSrc(person)">
+      <div class="img-round">
+        <img [lazyLoad]="imgSrc(person)">
+      </div>
     </div>
     <div class="person-container-right">
       <div class="label">
         <div class="topic">{{person.topic}}</div>
-        <div class="name">by {{person.name}}</div>
+        <div class="name">with {{person.name}}</div>
       </div>
     </div>    
   </div>

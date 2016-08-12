@@ -1,15 +1,22 @@
 <?php
 
 include 'db.php';
+$path_info = array_key_exists('PATH_INFO', $_SERVER) ? $_SERVER['PATH_INFO'] : null;
+$pwd = $path_info != null ? ltrim($path_info, "/") : null;
 
-if(!file_exists('./db')) { mkdir('./db'); }
+if($pwd == 'reset') {
 
-$db = new KouluDB();
+    $db = new KouluDB('./db/koulu.sqlite');
 
-$db->recreate();
+    $db->recreate();
 
-$result = $db->getAll();
+    $result = $db->getAll();
 
-echo(json_encode($result->fetchArray()));
+    echo "Database successfully reset";
+}
+else {
+
+    echo "Incorrect password";
+}
 
 ?>

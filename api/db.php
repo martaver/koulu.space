@@ -6,26 +6,37 @@
  */
 class KouluDB extends SQLite3
 {
-    function __construct()
+    function __construct($path)
     {
-        $this->open('./db/koulu.sqlite');
+        $dir = dirname($path);
+        if(!file_exists($dir)) { mkdir($dir); }
+        $this->open($path);
     }
 
-    function recreate() {
+    function ensureCreated()
+    {
+        $this->exec('CREATE TABLE if not exists person (id INTEGER PRIMARY KEY, code char(3), name nvarchar(255), email nvarchar(255), topic nvarchar(255))');
+    }
+
+    function recreate() 
+    {
         $this->exec('DROP TABLE if exists person');
-        $this->exec('CREATE TABLE person (id INTEGER PRIMARY KEY, code char(3), name nvarchar(255), email nvarchar(255), topic nvarchar(255))');
-    }
+        $this->ensureCreated();
+    }    
 
-    function getAll() {
+    function getAll() 
+    {
         return $this->query('SELECT * FROM person');
     }
 
-    function insert($code, $name, $email, $topic) {
+    function insert($code, $name, $email, $topic) 
+    {
         $this->exec("INSERT INTO person (id, code, name, email, topic) VALUES (NULL, '".$code."', '".$name."', '".$email."', '".$topic."')");
     }
 
-    function getByCode($code) {
-        return $this->querySingle("SELECT * FROM person WHERE $code = '".$code."'");
+    function getByCode($code) 
+    {
+        return $this->query("SELECT * FROM person WHERE code = '".$code."'");
     }
 }
 

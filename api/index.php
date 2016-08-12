@@ -1,4 +1,5 @@
 <?php
+
 $dsn = 'sqlite://./db/koulu.sqlite';
 $clients = [];
 /**

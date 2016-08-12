@@ -12,6 +12,10 @@ import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
 
     <div class="teach-container-content">
                 
+      <div class="teach-container-instructions">
+        Give us a crazy smile!
+      </div>
+                
       <div class="photo-booth-container">
         <photo-booth (gotSnapshot)="onGotSnapshot($event)"></photo-booth>    
       </div>
@@ -21,11 +25,11 @@ import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
     <div class="teach-container-actions">
     
       <button md-button (click)="nup()" *ngIf="hasSnapshot == true">
-        <div class="action">Nup</div>
+        <i class="material-icons">thumb_down</i>
       </button>
         
       <button md-button (click)="yup()" *ngIf="hasSnapshot == true">
-        <div class="action">Yup</div>
+        <i class="material-icons">thumb_up</i>
       </button>
           
     </div>

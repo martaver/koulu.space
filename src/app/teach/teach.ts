@@ -28,8 +28,16 @@ enum State{
   <koulu-toolbar title="Sign the yearbook"></koulu-toolbar>    
   <teach-selfie *ngIf="state == State.Selfie" (gotSelfie)="onGotSelfie($event)" ></teach-selfie>  
   <div *ngIf="state == State.Details" class="teach-details-container">
+    <div class="teach-container-instructions">
+        Gotcha!
+    </div>
     <div class="after-selfie-container">
-      <img [src]="snapshot.dataUrl" class="after-selfie">
+      <div class="snapshot-container">
+        <img [src]="snapshot.dataUrl" class="snapshot">
+      </div>
+    </div>
+    <div class="teach-container-instructions">
+        Now, a bit about you?
     </div>
     <teach-details (detailsSubmitted)="onDetailsSubmitted($event)"></teach-details>
   </div>  

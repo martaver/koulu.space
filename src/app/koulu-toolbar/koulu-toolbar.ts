@@ -14,9 +14,7 @@ import {Router} from "@angular/router";
         <img src="../../assets/img/koulu-logo.png">      
       </div>
       <div class="koulu-toolbar-content">{{title}}</div>
-      <div class="koulu-toolbar-menu">
-         <md-icon>menu</md-icon>
-      </div>
+      
   </div>
 `
 })
