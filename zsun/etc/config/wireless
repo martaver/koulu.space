@@ -1,0 +1,29 @@
+
+config wifi-device 'radio0'
+ 	option type 'mac80211'
+ 	option channel 'auto'
+ 	option hwmode '11g'
+ 	option path 'platform/ar933x_wmac'
+ 	option htmode 'HT20'
+ 	option disabled '0'
+ 	option txpower '30'
+ 	option country 'US'
+ 
+#config wifi-iface
+ 	#option ssid 'Tentacle'
+ 	#option device 'radio0'
+ 	#option mode 'sta'
+ 	#option network 'wwan'
+ 	#option encryption 'none'
+ 	#option encryption 'psk2'
+ 	#option key 'kouluonfire'
+ 
+config wifi-iface
+ 	option ssid 'OpenWrt'
+ 	option device 'radio0'
+ 	option mode 'ap'
+ 	option network 'lan'
+ 	option encryption 'none'
+ 	#option encryption 'psk2'
+ 	#option key 'yourSuperSecurePass'
+
