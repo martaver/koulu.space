@@ -39,7 +39,11 @@ enum State{
       </div>
       
       <div class="after-selfie-container">
-        <div class="circle snapshot" *ngIf="dataUrl" [style.background-image]="'url('+dataUrl+')'"></div>          
+        <div class="snapshot-size constrain-ratio-1-1">
+          <div class="constrain-ratio-content">
+            <div class="snapshot circle" *ngIf="dataUrl" [style.background-image]="'url('+dataUrl+')'"></div>
+          </div>
+        </div>                  
       </div>
       
       <div class="teach-container-instructions">

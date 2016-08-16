@@ -147,26 +147,21 @@ teach-details {
   justify-content: center;
 }
 
+.snapshot-size {
+  width: 50%;
+}
+
 .snapshot {
-   width: 200px;
-   height: 200px;
+   width: 100%;
+   height: 100%;
 }
 
 #photo-booth-ios {
   padding: 0 4px 0 4px;
 }
 
-#photo-booth-ios .wrapper {
+#photo-booth-ios .take-picture {
   width: 100%;
-  /* whatever width you want */
-  display: inline-block;
-  position: relative;
-}
-#photo-booth-ios .wrapper:after {
-  padding-top: 75%;
-  /* 16:9 ratio */
-  display: block;
-  content: '';
 }
 
 #photo-booth-ios img {
@@ -186,15 +181,6 @@ teach-details {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-}
-
-#photo-booth-ios .wrapper-target {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
 }
 
 #photo-booth-ios .icon-circle {

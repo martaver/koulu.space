@@ -24,8 +24,8 @@ import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
         
         <img [src]="dataUrl" *ngIf="dataUrl">        
         
-        <div class="wrapper" *ngIf="!(dataUrl)">
-          <label class="wrapper-target"> <!--Technique for styling file upload inputs: http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button-->
+        <div class="take-picture constrain-ratio-4-3" *ngIf="!(dataUrl)">
+          <label class="constrain-ratio-content"> <!--Technique for styling file upload inputs: http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button-->
             <input type="file" accept="image/*" capture="camera" (change)="onInputChanged($event)">
             <div class="icon-circle">
               <i class="material-icons">photo_camera</i>
