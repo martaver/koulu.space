@@ -6,11 +6,11 @@
   background:
 
     linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1)
+      rgba(70, 20, 40, 0.2),
+      rgba(0, 0, 0, 0.2)
     ),
 
-    url(/assets/img/bm-sunset-bikes.jpg) no-repeat;
+    url(/assets/img/bm-sunset-bikes.jpg) no-repeat left;
   background-size: cover;
 }
 

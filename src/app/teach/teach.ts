@@ -126,7 +126,7 @@ export class Teach {
       this.upload.makeBlobRequest('/api/upload.php', value.name, value.email, value.topic, this.snapshot.blob, 'selfie.png').subscribe((response) => {
 
         this.zone.run(() => {
-          console.log('uploaded!', response)
+          window.location.href = "/teacher/"+response.code ;
         });
       });
 

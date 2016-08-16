@@ -20,22 +20,22 @@ export const MATERIAL_PIPES = [
 
 export const MATERIAL_DIRECTIVES = [
   ...[
-    MdAnchor,
+    // MdAnchor,
     MdButton,
-    MdCheckbox,
+    // MdCheckbox,
     MdIcon,
-    MdProgressBar,
-    MdProgressCircle,
-    MdRadioButton,
-    MdRadioGroup,
+    // MdProgressBar,
+    // MdProgressCircle,
+    // MdRadioButton,
+    // MdRadioGroup,
     MdSpinner,
-    MdToolbar
+    // MdToolbar
   ],
-  ...MD_CARD_DIRECTIVES,
-  ...MD_GRID_LIST_DIRECTIVES,
+  // ...MD_CARD_DIRECTIVES,
+  // ...MD_GRID_LIST_DIRECTIVES,
   ...MD_INPUT_DIRECTIVES,
-  ...MD_LIST_DIRECTIVES,
-  ...MD_SLIDE_TOGGLE_DIRECTIVES,
+  // ...MD_LIST_DIRECTIVES,
+  // ...MD_SLIDE_TOGGLE_DIRECTIVES,
 ];
 
 export const MATERIAL_PROVIDERS = [

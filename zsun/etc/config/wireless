@@ -9,14 +9,14 @@ config wifi-device 'radio0'
  	option txpower '30'
  	option country 'US'
  
-config wifi-iface
- 	option ssid 'Tentacle'
- 	option device 'radio0'
- 	option mode 'sta'
- 	option network 'wwan'
- 	option encryption 'none'
- 	option encryption 'psk2'
- 	option key 'kouluonfire'
+#config wifi-iface
+ 	#option ssid 'Tentacle'
+ 	#option device 'radio0'
+ 	#option mode 'sta'
+ 	#option network 'wwan'
+ 	#option encryption 'none'
+ 	#option encryption 'psk2'
+ 	#option key 'kouluonfire'
  
 config wifi-iface
  	option ssid 'OpenWrt'

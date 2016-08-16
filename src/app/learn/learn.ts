@@ -22,18 +22,21 @@ class Person {
 <div id="learn-container">  
   <koulu-toolbar title="Learn anything"></koulu-toolbar>
   
-  <div *ngFor="let person of people" class="person-container">  
+  <div *ngFor="let person of people" class="person-container" (click)="onPersonClicked(person)">  
+    
     <div class="person-container-left">
       <div class="img-round">
         <img [lazyLoad]="imgSrc(person)">
       </div>
     </div>
+    
     <div class="person-container-right">
       <div class="label">
         <div class="topic">{{person.topic}}</div>
         <div class="name">with {{person.name}}</div>
       </div>
-    </div>    
+    </div>
+        
   </div>
 </div>
 
@@ -69,4 +72,8 @@ export class Learn {
     return '/api/selfies/'+person.id.toString()+'.png';
   }
 
+  onPersonClicked(person: Person) {
+
+    window.location.href = "/lesson/"+person.code;
+  }
 }
