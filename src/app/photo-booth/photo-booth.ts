@@ -6,7 +6,7 @@ import {
   Component, ElementRef, AfterViewInit, OnDestroy, Output, EventEmitter, NgZone
 } from '@angular/core';
 
-enum State {
+export enum State {
   Recording,
   Confirming
 }
@@ -51,7 +51,7 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
   public State = State;
   state: State = State.Recording;
-  video: HTMLVideoElement;
+  video: any;
   canvas: any;
   navigator: any;
   window: any;
@@ -82,9 +82,16 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
 
     this.navigator.getUserMedia(constraints, (stream) => {
 
-      //Success
       this.window.stream = stream; // make stream available to console
-      this.video.src = this.window.URL.createObjectURL(stream);
+
+      //Success
+      if (this.navigator.mozGetUserMedia) {
+        this.video.mozSrcObject = stream;
+      } else {
+        var vendorURL = window.URL || this.window.webkitURL;
+        this.video.src = vendorURL.createObjectURL(stream);
+      }
+
       this.video.play();
 
     }, (error) => {

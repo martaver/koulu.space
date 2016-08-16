@@ -13,7 +13,10 @@ export class UploadService {
       let formData: FormData = new FormData();
       let xhr: XMLHttpRequest = new XMLHttpRequest();
 
-      formData.append("blob", blob, filename);
+      formData.append("person_selfie", blob, filename);
+      formData.append("person_name", name);
+      formData.append("person_email", email);
+      formData.append("person_topic", topic);
 
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
@@ -28,9 +31,6 @@ export class UploadService {
       };
 
       xhr.open('POST', url, true);
-      xhr.setRequestHeader('person_name', name);
-      xhr.setRequestHeader('person_email', email);
-      xhr.setRequestHeader('person_topic', topic);
       xhr.send(formData);
     });
   }

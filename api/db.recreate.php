@@ -6,7 +6,7 @@ $pwd = $path_info != null ? ltrim($path_info, "/") : null;
 
 if($pwd == 'reset') {
 
-    $db = new KouluDB('./db/koulu2.sqlite');
+    $db = new KouluDB('./db/koulu.sqlite');
 
     $db->recreate();
 

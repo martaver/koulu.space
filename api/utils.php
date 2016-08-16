@@ -5,6 +5,13 @@ function reject(){
     die();
 }
 
+function error400($message) {
+    
+    http_response_code(400);
+    echo($message);
+    die();
+}
+
 function loadTeacherByAppendedCode() {
     $code = ltrim($_SERVER['PATH_INFO'], "/");
     if (!ctype_alnum($code)) reject();
