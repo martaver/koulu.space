@@ -31,8 +31,10 @@ import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
               <i class="material-icons">photo_camera</i>
             </div>            
           </label>  
-        </div>           
+        </div>        
       </div>
+      
+      <canvas id="photo-booth-ios-canvas" style="display: none"></canvas>
       
     </div>
     
@@ -110,12 +112,35 @@ export class TeachSelfie{
 
       reader.onload = (e) => {
 
-        this.zone.run(() => {
+        var canvas: any = document.getElementById("photo-booth-ios-canvas");
+        var context: any = canvas.getContext("2d");
 
-          this.dataUrl = e.target['result'];
-          this.snapshot = new GotSnapshotEvent(this.dataURItoBlob(this.dataUrl), this.dataUrl);
-          this.hasSnapshot = true;
-        })
+        // store current data to an image
+        var img = new Image();
+        img.src = e.target['result'];
+
+        img.onload = () => {
+
+          console.log('image loaded');
+          // reset the canvas with new dimensions
+          canvas.width = img.height;
+          canvas.height = img.width;
+
+          console.log('drawing w x h: ', img.width, img.height);
+
+          context.translate(img.height, 0);
+          context.rotate(Math.PI / 2);
+          context.drawImage(img, 0, 0);
+
+          this.zone.run(() => {
+
+
+            // this.dataUrl = e.target['result'];
+            this.dataUrl = canvas.toDataURL('image/png');
+            this.snapshot = new GotSnapshotEvent(this.dataURItoBlob(this.dataUrl), this.dataUrl);
+            this.hasSnapshot = true;
+          })
+        }
       };
 
       reader.readAsDataURL(input.files[0]);
@@ -133,4 +158,5 @@ export class TeachSelfie{
 
     this.gotSelfie.emit(this.snapshot);
   }
+
 }

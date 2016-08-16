@@ -19,7 +19,7 @@ config wifi-device 'radio0'
  	#option key 'kouluonfire'
  
 config wifi-iface
- 	option ssid 'OpenWrt'
+ 	option ssid 'KouluOnFire'
  	option device 'radio0'
  	option mode 'ap'
  	option network 'lan'
