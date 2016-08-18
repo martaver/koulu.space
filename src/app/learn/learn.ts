@@ -25,8 +25,9 @@ class Person {
   <div *ngFor="let person of people" class="person-container" (click)="onPersonClicked(person)">  
     
     <div class="person-container-left">
-      <div class="img-round">
-        <img [lazyLoad]="imgSrc(person)">
+      <div class="constrain-ratio-1-1" style="width: 100%">
+        <div class="constrain-ratio-content circle ng2-lazyloading" src="/assets/img/koulu-logo.png" [lazyLoad]="imgSrc(person)">
+        </div>
       </div>
     </div>
     
