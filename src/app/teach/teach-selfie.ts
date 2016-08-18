@@ -17,9 +17,15 @@ declare var loadImage: any;
       <div class="teach-container-instructions">
         Give us a crazy smile!
       </div>
-                
-      <div *ngIf="!iOS" class="photo-booth-container">
-        <photo-booth (gotSnapshot)="onGotSnapshot($event)"></photo-booth>    
+      
+      <div class="center" style="padding: 12px;">
+        <div class="constrain-ratio-1-1" style="width: 70%;">
+            <div class="constrain-ratio-content" style="overflow: hidden;">
+                <div class="circle" style="height: 100%; width: 100%; position: relative; overflow: hidden;">
+                  <photo-booth (gotSnapshot)="onGotSnapshot($event)"></photo-booth>
+                </div>        
+            </div>
+          </div>
       </div>
       
       <div *ngIf="iOS" id="photo-booth-ios">
@@ -40,13 +46,21 @@ declare var loadImage: any;
       
     </div>
     
-    <div class="teach-container-actions">
+    <div class="teach-container-actions" *ngIf="!hasSnapshot">   
+        
+      <button md-button (click)="backToSnapshot($event)">
+        <i class="material-icons">photo_camera</i>
+      </button>
+          
+    </div>
     
-      <button md-button (click)="nup()" *ngIf="hasSnapshot == true">
+    <div class="teach-container-actions" *ngIf="hasSnapshot">
+    
+      <button md-button (click)="nup($event)" >
         <i class="material-icons">thumb_down</i>
       </button>
         
-      <button md-button (click)="yup()" *ngIf="hasSnapshot == true">
+      <button md-button (click)="yup($event)">
         <i class="material-icons">thumb_up</i>
       </button>
           
@@ -88,6 +102,8 @@ export class TeachSelfie{
 
   private onInputChanged(event) {
 
+    event.preventDefault();
+
     loadImage.parseMetaData(event.target.files[0], data => { this.zone.run(() => {
 
         this.orientation = data.exif ? data.exif.get('Orientation') : 1;
@@ -113,8 +129,16 @@ export class TeachSelfie{
 
   }
 
+  private backToSnapshot(event) {
 
-  private nup(){
+    event.preventDefault();
+
+    this.photoBooth.snapshot()
+  }
+
+  private nup(event){
+
+    event.preventDefault();
 
     if(!this.iOS) this.photoBooth.start();
     this.dataUrl = null;
@@ -122,8 +146,9 @@ export class TeachSelfie{
     this.hasSnapshot = false;
   }
 
-  private yup(){
+  private yup(event){
 
+    event.preventDefault();
     this.gotSelfie.emit(this.snapshot);
   }
 

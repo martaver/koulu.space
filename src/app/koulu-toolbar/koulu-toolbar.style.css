@@ -31,9 +31,10 @@
   justify-content: center;
 
   color: rgba(198, 198, 198, 1) !important;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.3em;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 1.2em;
   text-transform: uppercase;
+  padding-left: 15px;
 }
 .koulu-toolbar-menu {
 

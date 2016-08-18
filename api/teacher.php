@@ -24,14 +24,16 @@ $teacher = loadTeacherByAppendedCode();
 
 <div class="container">  
 
-  <div class="koulu-toolbar">
+  <div class="koulu-toolbar-container">
+    <div class="koulu-toolbar">
       
       <div class="koulu-toolbar-logo">
         <a href="javascript:history.back()"><img src="/assets/img/koulu-logo.png"></a>
       </div>      
       <div class="koulu-toolbar-content">Graduation</div>
       <div class="koulu-toolbar-menu"></div>
-  </div>  
+    </div>  
+  </div>
 
   <div class="panel hint">
     <span>Tip: Screenshot this page :)

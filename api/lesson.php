@@ -24,13 +24,15 @@ $teacher = loadTeacherByAppendedCode();
   <body class="bg">
 
     <div class="container">
-      <div class="koulu-toolbar">
-
-        <div class="koulu-toolbar-logo">
-          <a href="/"><img src="/assets/img/koulu-logo.png"></a>
-        </div>
-        <div class="koulu-toolbar-content">Lesson</div>
-        <div class="koulu-toolbar-menu"></div>
+      <div class="koulu-toolbar-container">
+        <div class="koulu-toolbar">
+          
+          <div class="koulu-toolbar-logo">
+            <a href="javascript:history.back()"><img src="/assets/img/koulu-logo.png"></a>
+          </div>      
+          <div class="koulu-toolbar-content">Graduation</div>
+          <div class="koulu-toolbar-menu"></div>
+        </div>  
       </div>
 
       <div class="panel hint">
@@ -55,7 +57,7 @@ $teacher = loadTeacherByAppendedCode();
 
 <div class="panel">
   <div class="para row">
-    <div class="instructions">To get in touch with <?php echo $teacher["name"] ?> after the burn, save this page to your homescreen.</div>
+    <div class="instructions">To get in touch with <span style="color: #f0f0f0"><?php echo $teacher["name"] ?></span> after the burn, save this page to your homescreen.</div>
   </div>
 </div>
 

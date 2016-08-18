@@ -13,7 +13,7 @@ html, body{
       rgba(0, 0, 0, 0.4)
     ),
 
-    url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat fixed;
+    url(/assets/img/bm-sunset-bikes.jpg) no-repeat fixed;
   background-size: cover;
 }
 
@@ -75,7 +75,7 @@ html, body{
 
 .topic {
   text-align: center;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Averia Serif Libre', sans-serif;
   font-size: 1.8em;
   font-weight: bold;
   color: rgba(198, 198, 198, 1);
@@ -85,7 +85,7 @@ html, body{
 
 .name {
   text-align: center;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Averia Serif Libre', sans-serif;
   font-size: 1.1em;
   font-weight: 100;
   color: rgba(198, 198, 198, 1);
@@ -96,7 +96,7 @@ html, body{
     color: rgba(198, 198, 198, 1) !important;
     text-align: center;
     font-style: italic;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Open Sans Light', monospace;
     font-size: 0.8em;
 }
 
@@ -106,7 +106,7 @@ html, body{
 
 .instructions {
     color: rgba(198, 198, 198, 1) !important;
-    font-family: 'Source Code Pro', monospace;
+    font-family: 'Open Sans Light', monospace;
     font-size: 0.8em;
 }
 
@@ -152,19 +152,26 @@ html, body{
 }
 
 @font-face {
-  font-family: 'Droid Sans';
+  font-family: 'Averia Serif Libre';
   font-style: normal;
   font-weight: 700;
-  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(/assets/fonts/droid-sans-bold.woff) format('woff');
+  src: local('Averia Serif Libre Bold'), local('AveriaSerifLibre-Bold'), url(/assets/fonts/AveriaSerifLibre-bold.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+
+/* latin */
 @font-face {
-  font-family: 'Source Code Pro';
+  font-family: 'Open Sans';
   font-style: normal;
-  font-weight: 200;
-  src: local('Source Code Pro ExtraLight'), local('SourceCodePro-ExtraLight'), url(/assets/fonts/source-code-pro-extralight.woff) format('woff');
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(/assets/fonts/open-sans.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
 
+.koulu-toolbar-container {
+  padding: 4px 4px 0px 4px;
+}
 .koulu-toolbar {
   background: rgba(198, 198, 198, 0.32) !important;
   height: 60px;
@@ -172,11 +179,10 @@ html, body{
 
   display: flex;
   flex-direction: row;
-  margin: 4px 4px 0 4px;
 }
 
 .koulu-toolbar-logo {
- position: absolute;
+  position: absolute;
 }
 
 .koulu-toolbar-logo img {
@@ -196,11 +202,11 @@ html, body{
   justify-content: center;
 
   color: rgba(198, 198, 198, 1) !important;
-  font-family: 'Source Code Pro', monospace;
-  font-size: 1.3em;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 1.2em;
   text-transform: uppercase;
+  padding-left: 15px;
 }
-
 .koulu-toolbar-menu {
 
   display: -webkit-flex;
@@ -214,7 +220,7 @@ html, body{
 
   color: rgba(198, 198, 198, 1) !important;
   font-size: 1.3em;
-  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .scale-text {

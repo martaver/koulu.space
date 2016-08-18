@@ -42,7 +42,7 @@ enum State{
       <div class="after-selfie-container">
         <div class="snapshot-size constrain-ratio-1-1">
           <div class="constrain-ratio-content">
-            <div class="snapshot circle" *ngIf="dataUrl" [style.background-image]="'url('+dataUrl+')'"></div>
+            <div class="snapshot circle" *ngIf="dataUrl" [style.background-image]="'url('+dataUrl+')'" (click)="backToSelfie()" ></div>
           </div>
         </div>                  
       </div>
@@ -119,6 +119,15 @@ export class Teach {
     this.dataUrl = snapshot.dataUrl;
     this.state = State.Details;
     // this.nameElement.focus();
+  }
+
+  backToSelfie(event) {
+
+    event.preventDefault();
+
+    this.snapshot = null;
+    this.dataUrl = null;
+    this.state = State.Selfie;
   }
 
 

@@ -84,7 +84,7 @@
 
 .person-container-right .topic {
   text-align: center;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Averia Serif Libre', sans-serif;
   font-size: 1.4em;
   font-weight: bold;
   color: rgba(198, 198, 198, 1);
@@ -93,8 +93,8 @@
 
 .person-container-right .name {
   text-align: center;
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 0.8em;
+  font-family: 'Open Sans Light', sans-serif;
+  font-size: 1.1em;
   font-weight: 100;
   color: rgba(198, 198, 198, 1);
 

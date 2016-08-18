@@ -2,8 +2,8 @@
   background:
 
     linear-gradient(
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.2)
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.3)
     );
   background-size: cover;
   min-height: 100%;
@@ -89,7 +89,7 @@ teach-details {
   padding: 4px;
 
   color: rgba(198, 198, 198, 1) !important;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Open Sans Light', monospace;
   font-size: 1.3em;
 
   text-align: center;

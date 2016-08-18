@@ -45,15 +45,16 @@ img.home-container-logo {
 }
 
 #home-container-actions button .prefix {
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Averia Serif Libre', cursive;
   font-size: 1.3em;
   color: rgba(198, 198, 198, 1);
+  text-transform: uppercase;
 }
 
 #home-container-actions button .action {
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 2.3em;
-  font-weight: bold;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 2.7em;
+  /*font-weight: bold;*/
   color: rgba(198, 198, 198, 1);
   text-transform: uppercase;
 }
