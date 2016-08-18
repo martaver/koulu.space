@@ -64,7 +64,7 @@ $teacher = loadTeacherByAppendedCode();
   </div>
 
   <div class="panel instructions end">    
-    <div>Use the code to stay in touch with your students:</div>
+    Use the code to stay in touch with your students:
     <ol>        
         <li>Get some tokens (ask the staff).</li>
         <li>Write your code on them.</li>
