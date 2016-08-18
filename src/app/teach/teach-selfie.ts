@@ -86,26 +86,6 @@ export class TeachSelfie{
     this.hasSnapshot = true;
   }
 
-  private dataURItoBlob(dataURI) {
-    // convert base64 to raw binary data held in a string
-    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-    var byteString = atob(dataURI.split(',')[1]);
-
-    // separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-    // write the bytes of the string to an ArrayBuffer
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-
-    // write the ArrayBuffer to a blob, and you're done
-    return new Blob([ab], {type: mimeString});
-  }
-
-
   private onInputChanged(event) {
 
     loadImage.parseMetaData(event.target.files[0], data => { this.zone.run(() => {
@@ -120,56 +100,17 @@ export class TeachSelfie{
         var handleLoad = canvas => { this.zone.run(() => {
 
           this.dataUrl = canvas.toDataURL('image/png');
-          this.snapshot = new GotSnapshotEvent(this.dataURItoBlob(this.dataUrl), this.dataUrl);
-          this.hasSnapshot = true;
+          canvas.toBlob(blob => { this.zone.run(() => {
+
+            this.snapshot = new GotSnapshotEvent(blob, this.dataUrl);
+            this.hasSnapshot = true;
+          })});
         })};
 
         loadImage(event.target.files[0], handleLoad, options);
       });
     });
 
-
-
-    // var input = event.target;
-    // if (input.files && input.files[0]) {
-    //
-    //   var reader = new FileReader();
-    //
-    //   reader.onload = (e) => {
-    //
-    //     var canvas: any = document.getElementById("photo-booth-ios-canvas");
-    //     var context: any = canvas.getContext("2d");
-    //
-    //     // store current data to an image
-    //     var img = new Image();
-    //     img.src = e.target['result'];
-    //
-    //     img.onload = () => {
-    //
-    //       console.log('image loaded');
-    //       // reset the canvas with new dimensions
-    //       canvas.width = img.height;
-    //       canvas.height = img.width;
-    //
-    //       console.log('drawing w x h: ', img.width, img.height);
-    //
-    //       context.translate(img.height, 0);
-    //       context.rotate(Math.PI / 2);
-    //       context.drawImage(img, 0, 0);
-    //
-    //       this.zone.run(() => {
-    //
-    //
-    //         // this.dataUrl = e.target['result'];
-    //         this.dataUrl = canvas.toDataURL('image/png');
-    //         this.snapshot = new GotSnapshotEvent(this.dataURItoBlob(this.dataUrl), this.dataUrl);
-    //         this.hasSnapshot = true;
-    //       })
-    //     }
-    //   };
-    //
-    //   reader.readAsDataURL(input.files[0]);
-    // }
   }
 
 
