@@ -42,7 +42,7 @@ $teacher = loadTeacherByAppendedCode();
   <div class="topic center" style="margin-bottom: 12px;"><?php echo $teacher["topic"] ?></div>
 
   <div class="center">
-    <div class="constrain-ratio-1-1" style="width: 40%">
+    <div class="constrain-ratio-1-1" style="width: 30%">
       <div class="constrain-ratio-content">
         <div class="circle" style="background-image: url(/api/selfies/<?php echo $teacher["id"] ?>.png); width: 100%; height: 100%;"></div>
       </div>
@@ -50,6 +50,7 @@ $teacher = loadTeacherByAppendedCode();
   </div>
 
   <div class="name center">with <?php echo $teacher["name"] ?></div>
+
 </div>
 
 <div class="panel">

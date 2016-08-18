@@ -28,7 +28,7 @@ html, body{
   flex-direction: column;
 
 
-  overflow-y: scroll;
+
   min-height: 100%;
   max-width: 768px;
 }
@@ -218,7 +218,7 @@ html, body{
 }
 
 .scale-text {
-  font-size: 20vw !important;
+  font-size: 10vw !important;
 }
 
 .circle {
