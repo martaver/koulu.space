@@ -4,10 +4,7 @@ html, body{
   margin: 0;
 }
 
-.container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.bg {
 
   background:
 
@@ -18,9 +15,22 @@ html, body{
 
     url(/assets/img/bm-sunset-silhouettes.jpg) no-repeat fixed;
   background-size: cover;
+}
+
+.container {
+  position: relative;
+
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+
+
   overflow-y: scroll;
   min-height: 100%;
-  margin: 0;
+  max-width: 768px;
 }
 
 .row {
@@ -203,4 +213,8 @@ html, body{
   color: rgba(198, 198, 198, 1) !important;
   font-size: 1.3em;
   margin-left: 4%;
+}
+
+.scale-text {
+  font-size: 20vw !important;
 }

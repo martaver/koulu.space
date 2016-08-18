@@ -20,7 +20,9 @@ $teacher = loadTeacherByAppendedCode();
   <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class="container">  
+<body class="bg">
+
+<div class="container">  
 
   <div class="koulu-toolbar">
       
@@ -32,14 +34,14 @@ $teacher = loadTeacherByAppendedCode();
   </div>  
 
   <div class="panel hint">
-    <span>Tip: Screenshot this page :)</div>
+    <span>Tip: Screenshot this page :)
   </div>  
 
   <div class="panel" style="padding: 12px;">    
     <div class="topic center" style="margin-bottom: 12px;">You're in!</div>
     <div class="center" style="margin-bottom: 12px;">
         <div class="snapshot-container">
-            <img class="snapshot" src="/selfies/<?php echo $teacher["id"] ?>.png">
+            <img class="snapshot" src="/api/selfies/<?php echo $teacher["id"] ?>.png">
         </div> 
     </div>
     <div class="name center">Welcome, <?php echo $teacher["name"] ?>.</div>
@@ -49,7 +51,7 @@ $teacher = loadTeacherByAppendedCode();
     <div class="instructions">Your Koulu code is:</div>        
   </div>
 
-  <div class="panel center topic" style="padding: 12px;">
+  <div class="panel center topic scale-text" style="padding: 12px;">
     <?php echo $teacher["code"] ?>
   </div>
 
@@ -62,5 +64,8 @@ $teacher = loadTeacherByAppendedCode();
     </ol>
   </div>
 
+</div>
+
 </body>
+
 </html>
