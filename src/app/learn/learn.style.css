@@ -44,6 +44,7 @@
   overflow: hidden;
   margin-right: 4px;
   max-width: 160px;
+  min-width: 80px;
 
   display: -webkit-flex;
   display: flex;
@@ -76,6 +77,8 @@
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .person-container-right .label {

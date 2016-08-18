@@ -53,15 +53,15 @@ enum State{
       
      <div class="details-form-group">
   
-      <md-input #nameElement [formControl]="name" id="name" type="text" placeholder="Your name">
+      <md-input #nameElement [formControl]="name" id="name" type="text" placeholder="Your name" maxLength="150">
         <md-hint *ngIf="!name.valid && name.touched">We need your name</md-hint>
       </md-input>
       
-      <md-input [formControl]="email" id="email" type="email" placeholder="Your email">
+      <md-input [formControl]="email" id="email" type="email" placeholder="Your email" maxLength="250">
         <md-hint *ngIf="!email.valid && email.touched">We need your email</md-hint>
       </md-input>
         
-      <md-input [formControl]="topic" id="topic" type="text" placeholder="What are you teaching?">
+      <md-input [formControl]="topic" id="topic" type="text" placeholder="What are you teaching?" maxLength="150">
         <md-hint *ngIf="!topic.valid && topic.touched">We need to know what you're teaching</md-hint>
       </md-input>
       
@@ -133,7 +133,7 @@ export class Teach {
       this.upload.makeBlobRequest('/api/upload.php', value.name, value.email, value.topic, this.snapshot.blob, 'selfie.png').subscribe((response) => {
 
         this.zone.run(() => {
-          history.replaceState({}, "Koulu on Fire", "https://koulu.space/");
+          history.replaceState({}, "Koulu on Fire", "/");
           window.location.href = "/teacher/"+response.code ;
         });
       });
