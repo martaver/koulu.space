@@ -46,7 +46,7 @@ $teacher = loadTeacherByAppendedCode();
   <div class="center">
     <div class="constrain-ratio-1-1" style="width: 30%">
       <div class="constrain-ratio-content">
-        <div class="circle" style="background-image: url(/api/selfies/<?php echo $teacher["id"] ?>.png); width: 100%; height: 100%;"></div>
+        <div class="circle" style="background-image: url(/api/selfies/<?php echo $teacher["id"] ?>.jpeg); width: 100%; height: 100%;"></div>
       </div>
     </div>
   </div>

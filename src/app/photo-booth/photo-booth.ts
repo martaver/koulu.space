@@ -124,6 +124,9 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       this.context = this.canvas.getContext('2d');
       this.context.drawImage(this.video, 0, 0);
 
+      //For some reason, image/jpeg is much more efficient than png.
+      //Theory 1 : It could be that toDataURL is encoding a jpeg & compressing.
+      //Theory 2 : It could have been that prevously when saving as png, when we upload a jpeg it gets decompressed and saved as a png and got huge.
       this.imgSrc = this.canvas.toDataURL('image/jpeg');
 
       this.state = this.State.Confirming;

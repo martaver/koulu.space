@@ -31,11 +31,11 @@ $id = $db->lastInsertRowID();
 
 //Save the image in selfies under the same ID.
 $target_dir = "selfies/";
-$target_file = $target_dir . $id.".png";
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
 $selfie = $_FILES["person_selfie"];
+$imageFileType = pathinfo($selfie["name"],PATHINFO_EXTENSION);
+$target_file = $target_dir . $id.".".$imageFileType;
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {

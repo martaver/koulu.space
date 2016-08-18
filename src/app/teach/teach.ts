@@ -139,7 +139,7 @@ export class Teach {
 
       var value = this.detailsForm.value;
 
-      this.upload.makeBlobRequest('/api/upload.php', value.name, value.email, value.topic, this.snapshot.blob, 'selfie.png').subscribe((response) => {
+      this.upload.makeBlobRequest('/api/upload.php', value.name, value.email, value.topic, this.snapshot.blob, 'selfie.jpeg').subscribe((response) => {
 
         this.zone.run(() => {
           history.replaceState({}, "Koulu on Fire", "/");
