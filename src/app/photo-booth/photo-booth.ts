@@ -124,7 +124,7 @@ export class PhotoBooth  implements AfterViewInit, OnDestroy {
       this.context = this.canvas.getContext('2d');
       this.context.drawImage(this.video, 0, 0);
 
-      this.imgSrc = this.canvas.toDataURL('image/png');
+      this.imgSrc = this.canvas.toDataURL('image/jpeg');
 
       this.state = this.State.Confirming;
 

@@ -35,9 +35,11 @@ $target_file = $target_dir . $id.".png";
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
+$selfie = $_FILES["person_selfie"];
+
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["person_selfie"]["tmp_name"]);
+    $check = getimagesize($selfie["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -48,7 +50,13 @@ if(isset($_POST["submit"])) {
 }
 
 // Check file size
-if ($_FILES["person_selfie"]["size"] > 4000000) {
+if ($selfie["size"] == 0) {
+    echo "Your posted no data.";
+    $uploadOk = 0;
+}
+
+// Check file size
+if ($selfie["size"] > 4000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -65,8 +73,9 @@ if ($uploadOk == 0) {
     
     //Create target directory if it doesn't already exist.
     if(!file_exists($target_dir)) { mkdir($target_dir); }        
-
-    if (move_uploaded_file($_FILES["person_selfie"]["tmp_name"], $target_file)) {
+    
+    $from = $selfie["tmp_name"];
+    if (move_uploaded_file($from, $target_file)) {
         echo "{ \"id\": ".$id.", \"code\": \"".$code."\"}";
     } else {
         echo "Sorry, there was an error uploading your file.";

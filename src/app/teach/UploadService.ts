@@ -13,6 +13,7 @@ export class UploadService {
       let formData: FormData = new FormData();
       let xhr: XMLHttpRequest = new XMLHttpRequest();
 
+      console.log('appending file: ', filename, blob);
       formData.append("person_selfie", blob, filename);
       formData.append("person_name", name);
       formData.append("person_email", email);

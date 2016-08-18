@@ -41,31 +41,26 @@ declare var loadImage: any;
           
           <div *ngIf="dataUrl" class="constrain-ratio-content">
             <img [src]="dataUrl" class="circle">
-          </div>
-          
+          </div>          
           
         </div>        
       </div>
       
       <canvas id="photo-booth-ios-canvas" style="display: none"></canvas>
       
-    </div>
+    </div>   
     
-    <div class="teach-container-actions" *ngIf="!hasSnapshot && !iOS">   
-        
-      <button md-button (click)="backToSnapshot($event)">
+    <div class="teach-container-actions" >
+    
+      <button md-button (click)="backToSnapshot($event)" *ngIf="!hasSnapshot && !iOS"> 
         <i class="material-icons">photo_camera</i>
       </button>
-          
-    </div>
     
-    <div class="teach-container-actions" *ngIf="hasSnapshot">
-    
-      <button md-button (click)="nup($event)" >
+      <button md-button (click)="nup($event)" *ngIf="hasSnapshot">
         <i class="material-icons">thumb_down</i>
       </button>
         
-      <button md-button (click)="yup($event)">
+      <button md-button (click)="yup($event)" *ngIf="hasSnapshot">
         <i class="material-icons">thumb_up</i>
       </button>
           
@@ -105,6 +100,25 @@ export class TeachSelfie{
     this.hasSnapshot = true;
   }
 
+  private dataURItoBlob(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    // write the ArrayBuffer to a blob, and you're done
+    return new Blob([ab], {type: mimeString});
+  }
+
   private onInputChanged(event) {
 
     event.preventDefault();
@@ -120,12 +134,9 @@ export class TeachSelfie{
 
         var handleLoad = canvas => { this.zone.run(() => {
 
-          this.dataUrl = canvas.toDataURL('image/png');
-          canvas.toBlob(blob => { this.zone.run(() => {
-
-            this.snapshot = new GotSnapshotEvent(blob, this.dataUrl);
-            this.hasSnapshot = true;
-          })});
+          this.dataUrl = canvas.toDataURL('image/jpeg');
+          this.snapshot = new GotSnapshotEvent(this.dataURItoBlob(this.dataUrl), this.dataUrl);
+          this.hasSnapshot = true;
         })};
 
         loadImage(event.target.files[0], handleLoad, options);

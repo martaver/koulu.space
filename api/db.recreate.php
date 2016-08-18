@@ -4,7 +4,7 @@ include 'db.php';
 $path_info = array_key_exists('PATH_INFO', $_SERVER) ? $_SERVER['PATH_INFO'] : null;
 $pwd = $path_info != null ? ltrim($path_info, "/") : null;
 
-if($pwd == 'reset') {
+if($pwd == 'qeOwx7oHIUfRvx7pdl58') {
 
     $db = new KouluDB('./db/koulu.sqlite');
 

@@ -173,7 +173,7 @@ teach-details {
 }
 
 #photo-booth-ios img {
-  width: 100%;
+  object-fit: cover;
 }
 
 #photo-booth-ios .icon-bg {
