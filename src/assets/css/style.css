@@ -39,12 +39,12 @@ html, body{
 
 .panel {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 
   margin: 4px 4px 0 4px;
   color: rgba(198, 198, 198, 1) !important;
   padding: 4px;
-  background: rgba(198, 198, 198, 0.32) !important;  
+  background: rgba(198, 198, 198, 0.32) !important;
 }
 
 .end {
@@ -82,9 +82,9 @@ html, body{
 
 .hint {
     color: rgba(198, 198, 198, 1) !important;
-    text-align: center; 
-    font-style: italic; 
-    font-family: 'Source Code Pro', monospace;    
+    text-align: center;
+    font-style: italic;
+    font-family: 'Source Code Pro', monospace;
     font-size: 0.8em;
 }
 
@@ -93,8 +93,8 @@ html, body{
 }
 
 .instructions {
-    color: rgba(198, 198, 198, 1) !important;         
-    font-family: 'Source Code Pro', monospace;    
+    color: rgba(198, 198, 198, 1) !important;
+    font-family: 'Source Code Pro', monospace;
     font-size: 0.8em;
 }
 

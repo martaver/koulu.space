@@ -3,12 +3,12 @@
 
 # TEAM
 
-  <name> -- <role> -- <twitter>
+  Sebastian Nemeth -- Nocturnal Technovore -- <twitter>
 
 # THANKS
 
-  <name>
-  PatrickJS -- @gdi2290
+  Demos, Helsinki
+  Aalto on Fire
   AngularClass -- @AngularClass
 
 # TECHNOLOGY COLOPHON

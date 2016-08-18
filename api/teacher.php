@@ -25,7 +25,7 @@ $teacher = loadTeacherByAppendedCode();
   <div class="koulu-toolbar">
       
       <div class="koulu-toolbar-logo">
-        <a href="javascript:history.back()"><img src="../../assets/img/koulu-logo.png"></a>
+        <a href="javascript:history.back()"><img src="/assets/img/koulu-logo.png"></a>
       </div>      
       <div class="koulu-toolbar-content">Graduation</div>
       <div class="koulu-toolbar-menu"></div>

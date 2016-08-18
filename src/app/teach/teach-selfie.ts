@@ -175,7 +175,9 @@ export class TeachSelfie{
 
   private nup(){
 
-    this.photoBooth.start();
+    if(!this.iOS) this.photoBooth.start();
+    this.dataUrl = null;
+    this.snapshot = null;
     this.hasSnapshot = false;
   }
 

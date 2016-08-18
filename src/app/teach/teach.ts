@@ -130,6 +130,7 @@ export class Teach {
       this.upload.makeBlobRequest('/api/upload.php', value.name, value.email, value.topic, this.snapshot.blob, 'selfie.png').subscribe((response) => {
 
         this.zone.run(() => {
+          history.replaceState({}, "Koulu on Fire", "https://koulu.space/");
           window.location.href = "/teacher/"+response.code ;
         });
       });
