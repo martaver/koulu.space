@@ -18,9 +18,9 @@ declare var loadImage: any;
         Give us a crazy smile!
       </div>
       
-      <div class="center" style="padding: 12px;">
+      <div *ngIf="!iOS" class="center" style="padding: 12px;">
         <div class="constrain-ratio-1-1" style="width: 70%;">
-            <div class="constrain-ratio-content" style="overflow: hidden;">
+            <div class="constrain-ratio-content">
                 <div class="circle" style="height: 100%; width: 100%; position: relative; overflow: hidden;">
                   <photo-booth (gotSnapshot)="onGotSnapshot($event)"></photo-booth>
                 </div>        
@@ -28,17 +28,22 @@ declare var loadImage: any;
           </div>
       </div>
       
-      <div *ngIf="iOS" id="photo-booth-ios">
+      <div *ngIf="iOS" id="photo-booth-ios" class="center">                                             
         
-        <img [src]="dataUrl" *ngIf="dataUrl">
-        
-        <div class="take-picture constrain-ratio-4-3" *ngIf="!(dataUrl)">
-          <label class="constrain-ratio-content"> <!--Technique for styling file upload inputs: http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button-->
+        <div class="take-picture constrain-ratio-1-1" style="width: 70%">
+          
+          <label *ngIf="!(dataUrl)" class="constrain-ratio-content"> <!--Technique for styling file upload inputs: http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button-->
             <input type="file" accept="image/*" capture="camera" (change)="onInputChanged($event)">
-            <div class="icon-circle">
+            <div class="icon-bg center circle">
               <i class="material-icons">photo_camera</i>
             </div>            
           </label>  
+          
+          <div *ngIf="dataUrl" class="constrain-ratio-content">
+            <img [src]="dataUrl" class="circle">
+          </div>
+          
+          
         </div>        
       </div>
       
@@ -46,7 +51,7 @@ declare var loadImage: any;
       
     </div>
     
-    <div class="teach-container-actions" *ngIf="!hasSnapshot">   
+    <div class="teach-container-actions" *ngIf="!hasSnapshot && !iOS">   
         
       <button md-button (click)="backToSnapshot($event)">
         <i class="material-icons">photo_camera</i>

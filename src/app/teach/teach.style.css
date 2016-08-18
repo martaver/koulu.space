@@ -165,7 +165,7 @@ teach-details {
 }
 
 #photo-booth-ios {
-  padding: 0 4px 0 4px;
+  padding: 12px;
 }
 
 #photo-booth-ios .take-picture {
@@ -176,35 +176,9 @@ teach-details {
   width: 100%;
 }
 
-/* Technique for styling file upload inputs: http://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button */
-#photo-booth-ios label {
+#photo-booth-ios .icon-bg {
 
   background: rgba(198, 198, 198, 0.32) !important;
-
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row; /* works with row or column */
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-
-#photo-booth-ios .icon-circle {
-  border-radius: 50%;
-  background: rgba(198, 198, 198, 0.32) !important;
-  width: 3em;
-  height: 3em;
-
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row; /* works with row or column */
-  flex-direction: row;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
 }
 
 #photo-booth-ios input {
