@@ -72,7 +72,7 @@ export class Learn {
 
   imgSrc(person: Person) {
 
-    return '/api/selfies/'+person.id.toString()+'.jpeg';
+    return '/api/selfies/thumb/'+person.id.toString()+'.jpeg';
   }
 
   onPersonClicked(person: Person) {

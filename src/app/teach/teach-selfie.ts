@@ -3,6 +3,7 @@
  */
 import {Component, EventEmitter, Output, ViewChild, NgZone, ElementRef} from '@angular/core';
 import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
+import {UploadService} from "./UploadService";
 
 declare var loadImage: any;
 
@@ -82,7 +83,7 @@ export class TeachSelfie{
   private dataUrl: string;
   private orientation: any;
 
-  constructor(private zone: NgZone) {
+  constructor(private zone: NgZone, private uploadService: UploadService) {
 
   }
 
@@ -100,24 +101,7 @@ export class TeachSelfie{
     this.hasSnapshot = true;
   }
 
-  private dataURItoBlob(dataURI) {
-    // convert base64 to raw binary data held in a string
-    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-    var byteString = atob(dataURI.split(',')[1]);
 
-    // separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-    // write the bytes of the string to an ArrayBuffer
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-
-    // write the ArrayBuffer to a blob, and you're done
-    return new Blob([ab], {type: mimeString});
-  }
 
   private onInputChanged(event) {
 
@@ -135,7 +119,7 @@ export class TeachSelfie{
         var handleLoad = canvas => { this.zone.run(() => {
 
           this.dataUrl = canvas.toDataURL('image/jpeg');
-          this.snapshot = new GotSnapshotEvent(this.dataURItoBlob(this.dataUrl), this.dataUrl);
+          this.snapshot = new GotSnapshotEvent(this.uploadService.dataURItoBlob(this.dataUrl), this.dataUrl);
           this.hasSnapshot = true;
         })};
 
