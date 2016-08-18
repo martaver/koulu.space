@@ -80,6 +80,7 @@ html, body{
   font-weight: bold;
   color: rgba(198, 198, 198, 1);
   text-transform: uppercase;
+  overflow: hidden;
 }
 
 .name {
@@ -88,6 +89,7 @@ html, body{
   font-size: 1.1em;
   font-weight: 100;
   color: rgba(198, 198, 198, 1);
+  overflow: hidden;
 }
 
 .hint {
@@ -217,4 +219,75 @@ html, body{
 
 .scale-text {
   font-size: 20vw !important;
+}
+
+.circle {
+
+  /* To use this, set width & height on the same element by style or another class. */
+  /* Then set background-url on elements that use this class. */
+
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.constrain-ratio-1-1 {
+
+  /* To use this, set width on the same element by style or another class. */
+
+  display: inline-block;
+  position: relative;
+}
+
+.constrain-ratio-1-1:after {
+
+  /* 1:1 ratio */
+  padding-top: 100%;
+
+  display: block;
+  content: '';
+}
+
+.constrain-ratio-16-9 {
+
+  /* To use this, set width on the same element by style or another class. */
+
+  display: inline-block;
+  position: relative;
+}
+
+.constrain-ratio-16-9:after {
+
+  /* 16:9 ratio */
+  padding-top: 56.25%;
+
+  display: block;
+  content: '';
+}
+
+.constrain-ratio-4-3 {
+
+  /* To use this, set width on the same element by style or another class. */
+
+  display: inline-block;
+  position: relative;
+}
+
+.constrain-ratio-4-3:after {
+
+  /* 4:3 ratio */
+  padding-top: 75%;
+
+  display: block;
+  content: '';
+}
+
+.constrain-ratio-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
 }

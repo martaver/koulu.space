@@ -38,20 +38,24 @@ $teacher = loadTeacherByAppendedCode();
       </div>
 
 <div class="panel" style="padding: 12px;">
-<div class="topic center" style="margin-bottom: 12px;"><?php echo $teacher["topic"] ?></div>
-<div class="center" style="margin-bottom: 12px;">
-<div class="snapshot-container">
-<img class="snapshot" src="/api/selfies/<?php echo $teacher["id"] ?>.png">
-</div>
-</div style="margin-bottom: 12px;">
-<div class="name center">with <?php echo $teacher["name"] ?></div>
+
+  <div class="topic center" style="margin-bottom: 12px;"><?php echo $teacher["topic"] ?></div>
+
+  <div class="center">
+    <div class="constrain-ratio-1-1" style="width: 40%">
+      <div class="constrain-ratio-content">
+        <div class="circle" style="background-image: url(/api/selfies/<?php echo $teacher["id"] ?>.png); width: 100%; height: 100%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="name center">with <?php echo $teacher["name"] ?></div>
 </div>
 
 <div class="panel">
-
-<div class="para row">
-<div class="instructions">To get in touch with <?php echo $teacher["name"] ?> after the burn, save this page to your homescreen.</div>
-</div>
+  <div class="para row">
+    <div class="instructions">To get in touch with <?php echo $teacher["name"] ?> after the burn, save this page to your homescreen.</div>
+  </div>
 </div>
 
 <div class="panel">
