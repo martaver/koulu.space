@@ -2,7 +2,6 @@ import {Component, ViewChild, NgZone} from '@angular/core';
 import { Router } from "@angular/router";
 import {PhotoBooth, GotSnapshotEvent} from "../photo-booth/photo-booth";
 import {KouluToolbar} from "../koulu-toolbar/koulu-toolbar";
-import {TeachDetails, GotDetailsEvent} from "./teach-details";
 import {TeachSelfie} from "./teach-selfie";
 import {UploadService} from "./UploadService";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
@@ -20,10 +19,12 @@ enum State{
   pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './teach.style.css' ],
-  directives: [KouluToolbar, TeachDetails, TeachSelfie],
+  directives: [KouluToolbar, TeachSelfie],
   providers: [UploadService],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
+<div id="teach-bg">
+
 <div id="teach-container">
 
   <koulu-toolbar title="Sign the yearbook"></koulu-toolbar>    
@@ -76,6 +77,8 @@ enum State{
   
   </form>
   
+</div>
+
 </div> 
 
 `

@@ -19,26 +19,28 @@ class Person {
   styleUrls: [ './learn.style.css' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
+<div id="learn-bg">
 <div id="learn-container">  
   <koulu-toolbar title="Learn anything"></koulu-toolbar>
   
   <div *ngFor="let person of people" class="person-container" (click)="onPersonClicked(person)">  
-    
-    <div class="person-container-left">
-      <div class="constrain-ratio-1-1" style="width: 100%">
-        <div class="constrain-ratio-content circle ng2-lazyloading" src="/assets/img/koulu-logo.png" [lazyLoad]="imgSrc(person)">
+      
+      <div class="person-container-left">
+        <div class="constrain-ratio-1-1" style="width: 100%">
+          <div class="constrain-ratio-content circle" [lazyLoad]="imgSrc(person)">
+          </div>
         </div>
       </div>
-    </div>
-    
-    <div class="person-container-right">
-      <div class="label">
-        <div class="topic">{{person.topic}}</div>
-        <div class="name">with {{person.name}}</div>
+      
+      <div class="person-container-right">
+        <div class="label">
+          <div class="topic">{{person.topic}}</div>
+          <div class="name">with {{person.name}}</div>
+        </div>
       </div>
+          
     </div>
-        
-  </div>
+</div>
 </div>
 
 `

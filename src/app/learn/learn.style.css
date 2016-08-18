@@ -1,8 +1,4 @@
-#learn-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
+#learn-bg {
   background:
 
     linear-gradient(
@@ -10,10 +6,27 @@
       rgba(0, 0, 0, 0.4)
     ),
 
-    url(/assets/img/bm-sunset-bikes.jpg) no-repeat right fixed;
+    url(/assets/img/bm-sunset-bikes.jpg) no-repeat right fixed;;
   background-size: cover;
+}
+
+#learn-container {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  /*display: flex;*/
+  /*flex-direction: column;*/
+
   overflow-y: scroll;
+  height: 100%;
   min-height: 100%;
+  max-width: 768px;
+}
+
+.person-list {
+
 }
 
 .person-container {
@@ -30,6 +43,7 @@
   width: 40%;
   overflow: hidden;
   margin-right: 4px;
+  max-width: 160px;
 
   display: -webkit-flex;
   display: flex;

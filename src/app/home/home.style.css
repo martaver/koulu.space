@@ -1,17 +1,13 @@
 #home-container {
   position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+
   height: 100%;
   display: flex;
   flex-direction: column;
-  background:
-
-    linear-gradient(
-      rgba(70, 20, 40, 0.2),
-      rgba(0, 0, 0, 0.2)
-    ),
-
-    url(/assets/img/bm-sunset-bikes.jpg) no-repeat left;
-  background-size: cover;
+  max-width: 768px;
 }
 
 img.home-container-logo {
