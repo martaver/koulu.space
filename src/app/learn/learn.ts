@@ -57,7 +57,7 @@ export class Learn {
 
   ngOnInit() {
 
-    this.http.get('/api/person')
+    this.http.get('/api/person/?by=id&order=desc')
       .map((res) => {
 
         var people = res.json();
