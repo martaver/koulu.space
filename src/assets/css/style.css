@@ -96,7 +96,7 @@ html, body{
     color: rgba(198, 198, 198, 1) !important;
     text-align: center;
     font-style: italic;
-    font-family: 'Open Sans Light', monospace;
+    font-family: 'Open Sans', monospace;
     font-size: 0.8em;
 }
 
@@ -106,7 +106,7 @@ html, body{
 
 .instructions {
     color: rgba(198, 198, 198, 1) !important;
-    font-family: 'Open Sans Light', monospace;
+    font-family: 'Open Sans', monospace;
     font-size: 0.8em;
 }
 
@@ -155,8 +155,9 @@ html, body{
   font-family: 'Averia Serif Libre';
   font-style: normal;
   font-weight: 700;
-  src: local('Averia Serif Libre Bold'), local('AveriaSerifLibre-Bold'), url(/assets/fonts/AveriaSerifLibre-bold.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  src:  url('/assets/fonts/AveriaSerifLibre-bold.woff2') format('woff2'),
+  url('/assets/fonts/AveriaSerifLibre-bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+  /*unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;*/
 }
 
 /* latin */
@@ -164,8 +165,9 @@ html, body{
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(/assets/fonts/open-sans.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+  src:  url('/assets/fonts/open-sans.woff2') format('woff2'),
+  url('/assets/fonts/open-sans.ttf')  format('truetype'); /* Safari, Android, iOS */
+  /*unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;*/
 }
 
 
