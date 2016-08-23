@@ -22,24 +22,46 @@
 </head>
 
 <body>
-
   <style type="text/css">
+  
+    html {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
     body {
       padding: 0;
       margin: 0;
       height: 100%;
+    }
     
+    .body-bg {
+      height: 100%;
+  
       background:
-      
+    
         linear-gradient(
           rgba(0, 0, 0, 0.2),
           rgba(0, 0, 0, 0.2)
         ),
-      
-        url(/assets/img/bm-sunset-bikes.jpg) no-repeat left fixed;
+    
+        url(/assets/img/bm-sunset-bikes.jpg) no-repeat left center;
+  
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
       background-size: cover;
+  
+      z-index: -10;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
+    
   </style>
+  <div class="body-bg"></div>
   <app>
     <style type="text/css">
       #loader-container {

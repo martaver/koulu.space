@@ -173,10 +173,6 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      },
-      {
-        test: /\.jpg$|\.woff$|\.ttf$/,
-        loader: "file"
       }
 
     ]
