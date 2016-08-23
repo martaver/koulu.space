@@ -53,16 +53,18 @@ enum State{
       
      <div class="details-form-group">
   
-      <md-input #nameElement [formControl]="name" id="name" type="text" placeholder="Your name" maxLength="150">
-        <md-hint *ngIf="!name.valid && name.touched">We need your name</md-hint>
+      <md-input #nameElement [formControl]="name" id="name" type="text" placeholder="What is your name? *" maxLength="150">
+        <md-hint *ngIf="!name.valid && name.touched">People need to know who you are!</md-hint>
+      </md-input>           
+        
+      <md-input [formControl]="topic" id="topic" type="text" placeholder="What are you teaching? *" maxLength="150">
+        <md-hint *ngIf="!topic.valid && topic.touched">People need to know what you're teaching!</md-hint>
       </md-input>
       
-      <md-input [formControl]="email" id="email" type="email" placeholder="Your email" maxLength="250">
-        <md-hint *ngIf="!email.valid && email.touched">We need your email</md-hint>
-      </md-input>
-        
-      <md-input [formControl]="topic" id="topic" type="text" placeholder="What are you teaching?" maxLength="150">
-        <md-hint *ngIf="!topic.valid && topic.touched">We need to know what you're teaching</md-hint>
+      <p class="inline-instructions">We can keep you in touch with your future students too! We just need...</p>      
+      
+      <md-input [formControl]="email" id="email" type="email" placeholder="Your email" maxLength="250" (focus)="startEdit()" (blur)="stopEdit()">
+        <md-hint  *ngIf="!email.valid && email.touched && !isEditing">Hm, that doesn't look like an email address.</md-hint>
       </md-input>
       
       </div>
@@ -98,19 +100,31 @@ export class Teach {
   private topic: AbstractControl;
   private snapshot: GotSnapshotEvent;
 
+  private isEditing: boolean = false;
+
+
+  private EMAIL_REGEXP: string = "^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$";
 
   // TypeScript public modifiers
   constructor(public router: Router, private upload: UploadService, private zone: NgZone, private fb: FormBuilder) {
 
     this.detailsForm = fb.group({
       name: ["", Validators.required],
-      email: ["", Validators.required],
+      email: ["", Validators.pattern(this.EMAIL_REGEXP)],
       topic: ["", Validators.required]
     });
 
     this.name = this.detailsForm.controls['name'];
     this.email = this.detailsForm.controls['email'];
     this.topic = this.detailsForm.controls['topic'];
+  }
+
+  private startEdit() {
+    this.isEditing = true;
+  }
+
+  private stopEdit() {
+    this.isEditing = false;
   }
 
   onGotSelfie(snapshot: GotSnapshotEvent) {

@@ -8,10 +8,10 @@ $name = array_key_exists('person_name', $_POST) ? $_POST['person_name'] : NULL;
 $email = array_key_exists('person_email', $_POST) ? $_POST['person_email'] : NULL;
 $topic = array_key_exists('person_topic', $_POST) ? $_POST['person_topic'] : NULL;
 
-$hasTopics = $name != NULL && $email != NULL && $topic != NULL;
+$hasTopics = $name != NULL && $topic != NULL;
 
 if(empty($_FILES)) error400('No image file uploaded.');
-if(!$hasTopics) error400('One or more required headers are missing.');
+if(!$hasTopics) error400('One or more required fields are missing.');
 
 $db = new KouluDb('./db/koulu.sqlite');
 

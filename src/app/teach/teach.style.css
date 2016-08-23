@@ -67,6 +67,11 @@ teach-details {
   color: darkorange;
 }
 
+.inline-instructions {
+  color: rgba(198, 198, 198, 1) !important;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .teach-container-content {
   z-index: 1;
   color: white;
