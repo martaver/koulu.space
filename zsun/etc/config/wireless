@@ -10,13 +10,13 @@ config wifi-device 'radio0'
  	option country 'US'
  
 #config wifi-iface
- 	#option ssid 'Tentacle'
+ 	#option ssid 'ZyXEL_6A28'
  	#option device 'radio0'
  	#option mode 'sta'
- 	#option network 'wwan'
+ 	#option network 'wwan' 	
  	#option encryption 'none'
- 	#option encryption 'psk2'
- 	#option key 'kouluonfire'
+	#option encryption 'psk2'
+ 	#option key 'NR499CKWeW4eR'
  
 config wifi-iface
  	option ssid 'KouluOnFire'
